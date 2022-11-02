@@ -1,0 +1,25 @@
+header {
+    background-color: antiquewhite;
+}
+
+main {
+    background-color: aliceblue;
+    display: inline-block;
+}
+
+nav {
+    display: inline-block;
+    background-color: magenta;
+}
+
+article {
+    margin-top: 2rem;
+}
+
+article>footer {
+    text-align: right;
+}
+
+body>footer {
+    background-color: aqua;
+}
