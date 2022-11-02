@@ -1,19 +1,33 @@
+:root {
+    --color1: #780000;
+    --color2: #c1121f;
+    --color3: #003049;
+    --color4: #669bbc;
+    --color5: #fdf0d5;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color5);
+    color: var(--color1);
+}
+
 header {
-    background-color: antiquewhite;
+    color: var(--color1);
 }
 
 main {
-    background-color: aliceblue;
     display: inline-block;
 }
 
 nav {
     display: inline-block;
-    background-color: magenta;
+    border: 0.1rem var(--color2) solid;
 }
 
 article {
     margin-top: 2rem;
+    border: 0.2rem var(--color1) solid;
 }
 
 article>footer {
@@ -21,5 +35,5 @@ article>footer {
 }
 
 body>footer {
-    background-color: aqua;
+    color: var(--color1);
 }
