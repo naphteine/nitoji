@@ -1,30 +1,202 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+
 :root {
     --color1: #780000;
     --color2: #c1121f;
     --color3: #003049;
     --color4: #669bbc;
-    --color5: #fdf0d5;
+    --color5: #e8ddda;
 }
 
 body {
-    background-color: var(--color5);
+    background: center/cover url("/img/raychan.jpg"), var(--color5);
     color: var(--color1);
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+#searchbar {
+    flex-grow: 1;
+}
+
+input {
+    width: inherit;
 }
 
 header {
+    background-color: #00304960;
+    border 5px solid #003049;
     color: var(--color1);
-    margin: 0.5rem;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-content: center;
 }
 
-header>h2,
-header>input,
-header>h4 {
-    display: inline-block;
+header>nav {
+    display: flex;
+    flex-direction: column;
 }
 
 body>main {
-    display: inline-block;
     border: 0.2rem #00304910 solid;
+}
+
+button {
+    background: none;
+    color: darkblue;
+    border: 2px solid;
+    padding: 1em 2em;
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+button:hover {
+    border-color: darkgreen;
+    color: black;
+    box-shadow: 0 0.5em 0.5em -0.4em darkgreen;
+    transform: translateY(-0.25em);
 }
 
 section {
@@ -35,7 +207,7 @@ article:hover {
     background-color: #00304960;
 }
 
-nav {
+body>nav {
     display: inline-block;
     background-color: #00304930;
     margin: 0.5rem;
