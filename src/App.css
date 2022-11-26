@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kosugi&family=Noto+Serif+Khojki:wght@400;700&family=Open+Sans:wght@300;400;700&family=Potta+One&display=swap");
+
 .form-control-dark {
   border-color: var(--bs-gray);
 }
@@ -18,13 +20,71 @@
   margin: 0.3rem;
 }
 
-.entry {
+.dict-entry {
   border: 1px solid black;
   border-radius: 10px;
   margin: 2rem;
   padding: 1rem;
 }
 
-.entry footer {
+.entry {
+  border-bottom: 1px dashed black;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.dict-entry :nth-last-child(1) {
+  border-bottom: none;
+}
+
+.entry-author {
+  font-weight: 300;
   text-align: right;
+}
+
+.main-footer {
+  text-align: center;
+}
+
+.dict-new {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 2rem;
+  border-radius: 10px;
+}
+
+.dict-entry {
+  padding: 1rem;
+}
+
+body {
+  margin-top: 3rem;
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid black;
+}
+
+.logo {
+  font-family: "Potta One", cursive;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.dict {
+  font-family: "Kosugi", sans-serif;
+}
+
+.entry {
+  font-family: "Noto Serif Khojki", serif;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+footer {
+  margin-bottom: 3rem;
 }

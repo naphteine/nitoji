@@ -35,7 +35,7 @@ function App() {
     );
   };
 
-  const entry = [
+  const dictData = [
     {
       caption: "昭和時代",
       entries: [
@@ -236,7 +236,7 @@ function App() {
         {Object.entries(DictEntries).map(([slug, { title }]) => (
           <li key={slug}>
             <Link to={`/dict/${slug}`}>
-              <h3>{title}</h3>
+              <h3 className="dict">{dictData[slug].caption}</h3>
             </Link>
           </li>
         ))}
@@ -251,20 +251,34 @@ function App() {
     const { title, description } = entry;
 
     return (
-      <div style={{ padding: 20 }}>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+      <>
+        <div style={{ padding: 20 }} className="dict-entry">
+          <h1>{dictData[slug].caption}</h1>
+          <p>
+            {dictData[slug].entries.map((e) => (
+              <div className="entry">
+                {e.text}
+                <div className="entry-author">{e.author}</div>
+              </div>
+            ))}
+          </p>
+        </div>
+        <div className="dict-new">
+          <h2>Yeni Girdi</h2>
+          <textarea />
+          <button>Gönder</button>
+        </div>
+      </>
     );
   }
 
   return (
     <Router>
-      <header>
+      <header className="fixed-top">
         <nav style={{ margin: 10 }}>
           <span className="text-start">
-            <Link to="/" style={{ padding: 5 }}>
-              Sözlük
+            <Link to="/" className="logo" style={{ padding: 5 }}>
+              日土辞書
             </Link>
 
             <Link to="/japonesk" style={{ padding: 5 }}>
@@ -305,7 +319,7 @@ function App() {
         </Route>
       </Routes>
 
-      <footer>
+      <footer className="main-footer">
         All rights reserved. Nitoji (c) {dateDisplay}.{" "}
         <a href="https://gguilt.com">gguilt</a>
       </footer>
