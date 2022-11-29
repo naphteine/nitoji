@@ -4340,6 +4340,11 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
+feather-icons-react@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/feather-icons-react/-/feather-icons-react-0.6.2.tgz#0f562b325b3e8ab2b936daf76e935fb9dcbd22c1"
+  integrity sha512-G677Y5nc3HzP1f5NNb5LJuZwKrI58BK4+/9O8Bl4naF9JixC+YL4trVom1F2ajnilq/EbU8JETPTNqvCzwH1qA==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"
@@ -8310,6 +8315,11 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+sweetalert2@^11.6.14:
+  version "11.6.14"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.6.14.tgz#7b05dcdd9699e5230ea888b5830cd2d5a97e4a4b"
+  integrity sha512-W8+vtsucIJg5BrFhHcqguNZMzmHGvVZVAYHaMGQ9dzrleOMZcHCGmnB46L9qUNdx5snr1GpMUVFjNuki7EBbuQ==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
