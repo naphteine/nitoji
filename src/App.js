@@ -1,4 +1,7 @@
 import { React, useEffect, useState } from "react";
+import { FaRegUserCircle, FaRegNewspaper } from "react-icons/fa";
+import { BiMessageSquareAdd } from "react-icons/bi";
+import { HiLogout } from "react-icons/hi";
 
 import {
   BrowserRouter as Router,
@@ -12,6 +15,7 @@ import "./App.css";
 
 function App() {
   const [dateDisplay, setDateDisplay] = useState("2022");
+  const [jwtToken, setJwtToken] = useState("haha");
 
   useEffect(() => {
     const newDate = new Date();
@@ -35,9 +39,8 @@ function App() {
     );
   };
 
-  const dictData = [
-    {
-      caption: "昭和時代",
+  const dictData = {
+    昭和時代: {
       entries: [
         {
           text: "Showa Dönemi.",
@@ -57,29 +60,30 @@ function App() {
         },
       ],
     },
-    {
-      caption: "和",
+    和: {
       entries: [
         {
           text: "Huzur, harmoni.",
           author: "jmdict-tr-bot",
+          detail: "2022-11-27 22:22",
           footer:
             "Kaynak: blalbalblabla.lalala | Kaynak gösterildiği takdirde kullanımı serbesttir.",
         },
         {
           text: "Japonların Çinlilerin taktığı 'cüce' Kanjisinden soğuduklarında kendilerini tanımlamak için seçtikleri Kanji.",
           author: "gg",
+          detail: "2022-11-27 22:23",
           footer: "",
         },
         {
           text: "Showa ve Reiwa dönem isimlerinde yer alır",
           author: "gg",
+          detail: "2022-11-27 22:24",
           footer: "",
         },
       ],
     },
-    {
-      caption: "昭昭",
+    昭昭: {
       entries: [
         {
           text: "Temiz, parlak, apaçık.",
@@ -89,7 +93,7 @@ function App() {
         },
       ],
     },
-  ];
+  };
 
   function Search() {
     const formSubmitted = (event) => {
@@ -161,67 +165,6 @@ function App() {
     );
   }
 
-  const BlogPosts = {
-    1: {
-      title: "Nitoji ve Japonesk",
-      date: "2022-11-26 10:03",
-      description: "",
-    },
-    2: {
-      title: "Second Blog Post",
-      description: "Hello React Router v6",
-    },
-  };
-
-  function Posts() {
-    return (
-      <div style={{ padding: 20 }}>
-        <h2>Japonesk</h2>
-        <Outlet />
-      </div>
-    );
-  }
-
-  function PostLists() {
-    return (
-      <ul>
-        {Object.entries(BlogPosts).map(([slug, { title }]) => (
-          <li key={slug}>
-            <Link to={`/japonesk/${slug}`}>
-              <h3>{title}</h3>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-  function Post() {
-    const { slug } = useParams();
-    const post = BlogPosts[slug];
-
-    const { title, description } = post;
-
-    return (
-      <div style={{ padding: 20 }}>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    );
-  }
-
-  const DictEntries = {
-    1: {
-      title: "Nitoji ve Japonesk",
-      date: "2022-11-26 10:03",
-      description: "",
-    },
-    2: {
-      title: "Second Blog Post",
-      description: "Hello React Router v6",
-    },
-  };
-
   function Entries() {
     return (
       <div style={{ padding: 20 }}>
@@ -233,10 +176,10 @@ function App() {
   function EntryLists() {
     return (
       <ul>
-        {Object.entries(DictEntries).map(([slug, { title }]) => (
+        {Object.entries(dictData).map(([slug, { title }]) => (
           <li key={slug}>
             <Link to={`/dict/${slug}`}>
-              <h3 className="dict">{dictData[slug].caption}</h3>
+              <h3 className="dict">{slug}</h3>
             </Link>
           </li>
         ))}
@@ -244,29 +187,58 @@ function App() {
     );
   }
 
+  function NewEntryField() {
+    return (
+      <div className="dict-new">
+        <form onSubmit={newEntrySubmitted}>
+          <textarea />
+          <button>Gönder</button>
+        </form>
+      </div>
+    );
+  }
+
+  function newEntrySubmitted(event) {
+    event.preventDefault();
+    dictData[1].entries.append(event.target.value);
+  }
+
   function Entry() {
     const { slug } = useParams();
-    const entry = DictEntries[slug];
+    const entry = dictData[slug];
 
     const { title, description } = entry;
 
     return (
       <>
         <div style={{ padding: 20 }} className="dict-entry">
-          <h1>{dictData[slug].caption}</h1>
-          <p>
+          <h1>{slug}</h1>
+          <em>
+            訓読み: やわ.らぐ、 やわ.らげる、 なご.む、 なご.やか、 あ.える
+          </em>
+          <br />
+          <em>音読み: ワ、 オ、 カ</em>
+          <br />
+          <span key={"jlpt-n3"} className="badge bg-secondary me-2">
+            jlpt-n3
+          </span>
+          <span key={"常用"} className="badge bg-secondary me-2">
+            常用
+          </span>
+          <span key={"grade-3"} className="badge bg-secondary me-2">
+            grade-3
+          </span>
+          <hr />
+          {jwtToken && <NewEntryField />}
+          <div>
             {dictData[slug].entries.map((e) => (
               <div className="entry">
                 {e.text}
                 <div className="entry-author">{e.author}</div>
+                <div className="entry-detail">{e.detail}</div>
               </div>
             ))}
-          </p>
-        </div>
-        <div className="dict-new">
-          <h2>Yeni Girdi</h2>
-          <textarea />
-          <button>Gönder</button>
+          </div>
         </div>
       </>
     );
@@ -281,26 +253,31 @@ function App() {
               日土辞書
             </Link>
 
-            <Link to="/japonesk" style={{ padding: 5 }}>
-              Japonesk
-            </Link>
+            <a href="https://japonesk.nitoji.com" style={{ padding: 5 }}>
+              Japonesk <FaRegNewspaper size={24} style={{ margin: 5 }} />
+            </a>
           </span>
           <span className="text-end">
-            <Link to="/ara" style={{ padding: 5 }}>
-              Arama
-            </Link>
+            {!jwtToken && (
+              <Link to="/uye" style={{ padding: 5 }}>
+                Üye
+                <FaRegUserCircle size={24} style={{ margin: 5 }} />
+              </Link>
+            )}
 
-            <Link to="/yeni" style={{ padding: 5 }}>
-              Başlık aç
-            </Link>
+            {jwtToken && (
+              <>
+                <Link to="/yeni" style={{ padding: 5 }}>
+                  Başlık aç
+                  <BiMessageSquareAdd size={24} style={{ margin: 5 }} />
+                </Link>
 
-            <Link to="/uye" style={{ padding: 5 }}>
-              Üye girişi
-            </Link>
-
-            <Link to="/kayit" style={{ padding: 5 }}>
-              Kayıt ol
-            </Link>
+                <Link to="/cikis" style={{ padding: 5 }}>
+                  Çıkış
+                  <HiLogout size={24} style={{ margin: 5 }} />
+                </Link>
+              </>
+            )}
           </span>
         </nav>
       </header>
@@ -310,13 +287,8 @@ function App() {
           <Route path="" element={<EntryLists />} />
           <Route path="/dict/:slug" element={<Entry />} />
         </Route>
-        <Route path="/search" element={<Search />} />
         <Route path="/uye" element={<Login />} />
         <Route path="/kayit" element={<Register />} />
-        <Route path="japonesk" element={<Posts />}>
-          <Route path="" element={<PostLists />} />
-          <Route path=":slug" element={<Post />} />
-        </Route>
       </Routes>
 
       <footer className="main-footer">
