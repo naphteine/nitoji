@@ -8,7 +8,7 @@ const ManageCatalogue = () => {
 
     useEffect(() => {
         if (jwtToken === "") {
-            navigate("/login");
+            navigate("/uye");
             return
         }
         const headers = new Headers();

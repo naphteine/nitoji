@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import EntryArea from "./EntryArea";
 
@@ -8,8 +8,8 @@ const Movie = () => {
   const [entry, setEntry] = useState([]);
   const [newEntry, setNewEntry] = useState("");
   let { id } = useParams();
-
-  const jwtToken = "";
+  const { jwtToken } = useOutletContext();
+  const navigate = useNavigate();
 
   const onChange = (event) => {
     setNewEntry(event.target.value);
@@ -53,7 +53,7 @@ const Movie = () => {
       };
 
       fetch(
-        `${process.env.REACT_APP_BACKEND}/entries/captions/${movie.id}`,
+        `${process.env.REACT_APP_BACKEND}/user/entries/captions/${movie.id}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -61,7 +61,7 @@ const Movie = () => {
           if (data.error) {
             console.log(data.error);
           } else {
-            Navigate(`/dict/${movie.id}`);
+            navigate(`/dict/${movie.id}`)
           }
         })
         .catch((err) => {
@@ -121,7 +121,7 @@ const Movie = () => {
         </span>
       ))}
       <hr />
-      {jwtToken && (<EntryArea />
+      {jwtToken !== "" && (<EntryArea onChange={onChange} onSubmit={handleSubmit} />
       )}
 
       <div>
