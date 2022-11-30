@@ -8,7 +8,7 @@ const EntryArea = (props) => {
             <TextArea onChange={props.onChange} />
             <button className="btn btn-primary">Paylaş</button>
         </div>
-    )
+    );
 }
 
 export default EntryArea;

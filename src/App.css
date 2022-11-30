@@ -3,6 +3,7 @@
 .form-control-dark {
   border-color: var(--bs-gray);
 }
+
 .form-control-dark:focus {
   border-color: #fff;
   box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
@@ -28,9 +29,7 @@
 }
 
 .entry {
-  border-bottom: 1px dashed black;
-  padding: 1rem;
-  margin: 1rem;
+  font-family: "Noto Serif Khojki", serif;
 }
 
 .dict-entry :nth-last-child(1) {
@@ -75,10 +74,6 @@ header {
 
 .dict {
   font-family: "Kosugi", sans-serif;
-}
-
-.entry {
-  font-family: "Noto Serif Khojki", serif;
 }
 
 body {

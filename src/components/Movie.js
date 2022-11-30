@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import Entry from "./Entry";
 import EntryArea from "./EntryArea";
-import TextArea from "./form/TextArea";
 
 const Movie = () => {
   const [movie, setMovie] = useState({});
@@ -123,13 +121,7 @@ const Movie = () => {
         </span>
       ))}
       <hr />
-      {jwtToken && (
-        <>
-          <div>
-            <textarea></textarea>
-            <button>Gönder</button>
-          </div>
-        </>
+      {jwtToken && (<EntryArea />
       )}
 
       <div>

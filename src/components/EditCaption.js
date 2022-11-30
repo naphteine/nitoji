@@ -18,8 +18,8 @@ const EditCaption = () => {
   const [movie, setMovie] = useState({
     id: 0,
     title: "",
-    genres: [],
-    genres_array: [Array(13).fill(false)],
+    tags: [],
+    tags_array: [Array(13).fill(false)],
   });
 
   // get id from the URL
@@ -30,7 +30,7 @@ const EditCaption = () => {
 
   useEffect(() => {
     if (jwtToken === "") {
-      navigate("/login");
+      navigate("/uye");
       return;
     }
 
@@ -39,8 +39,8 @@ const EditCaption = () => {
       setMovie({
         id: 0,
         title: "",
-        genres: [],
-        genres_array: [Array(13).fill(false)],
+        tags: [],
+        tags_array: [Array(13).fill(false)],
       });
 
       const headers = new Headers();
@@ -51,19 +51,19 @@ const EditCaption = () => {
         headers: headers,
       };
 
-      fetch(`${process.env.REACT_APP_BACKEND}/genres`, requestOptions)
+      fetch(`${process.env.REACT_APP_BACKEND}/tags`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           const checks = [];
 
           data.forEach((g) => {
-            checks.push({ id: g.id, checked: false, genre: g.genre });
+            checks.push({ id: g.id, checked: false, tag: g.tag });
           });
 
           setMovie((m) => ({
             ...m,
-            genres: checks,
-            genres_array: [],
+            tags: checks,
+            tags_array: [],
           }));
         })
         .catch((err) => {
@@ -80,7 +80,7 @@ const EditCaption = () => {
         headers: headers,
       };
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/movies/${id}`, requestOptions)
+      fetch(`${process.env.REACT_APP_BACKEND}/user/captions/${id}`, requestOptions)
         .then((response) => {
           if (response.status !== 200) {
             setError("Invalid response code: " + response.status);
@@ -95,18 +95,18 @@ const EditCaption = () => {
 
           const checks = [];
 
-          data.genres.forEach((g) => {
-            if (data.movie.genres_array.indexOf(g.id) !== -1) {
-              checks.push({ id: g.id, checked: true, genre: g.genre });
+          data.tags.forEach((g) => {
+            if (data.movie.tags_array.indexOf(g.id) !== -1) {
+              checks.push({ id: g.id, checked: true, tag: g.tag });
             } else {
-              checks.push({ id: g.id, checked: false, genre: g.genre });
+              checks.push({ id: g.id, checked: false, tag: g.tag });
             }
           });
 
           // set state
           setMovie({
             ...data.movie,
-            genres: checks,
+            tags: checks,
           });
         })
         .catch((err) => {
@@ -129,14 +129,14 @@ const EditCaption = () => {
       }
     });
 
-    if (movie.genres_array.length === 0) {
+    if (movie.tags_array.length === 0) {
       Swal.fire({
         title: "Error!",
-        text: "You must choose at least one genre!",
+        text: "You must choose at least one tag!",
         icon: "error",
         confirmButtonText: "OK",
       });
-      errors.push("genres");
+      errors.push("tags");
     }
 
     setErrors(errors);
@@ -171,7 +171,7 @@ const EditCaption = () => {
       credentials: "include",
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/admin/movies/${movie.id}`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/user/captions/${movie.id}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -200,10 +200,10 @@ const EditCaption = () => {
     console.log("checked is", event.target.checked);
     console.log("position is", position);
 
-    let tmpArr = movie.genres;
+    let tmpArr = movie.tags;
     tmpArr[position].checked = !tmpArr[position].checked;
 
-    let tmpIDs = movie.genres_array;
+    let tmpIDs = movie.tags_array;
     if (!event.target.checked) {
       tmpIDs.splice(tmpIDs.indexOf(event.target.value));
     } else {
@@ -212,7 +212,7 @@ const EditCaption = () => {
 
     setMovie({
       ...movie,
-      genres_array: tmpIDs,
+      tags_array: tmpIDs,
     });
   };
 
@@ -235,7 +235,7 @@ const EditCaption = () => {
           headers: headers,
         }
 
-        fetch(`${process.env.REACT_APP_BACKEND}/admin/movies/${movie.id}`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/user/captions/${movie.id}`, requestOptions)
           .then((response) => response.json())
           .then((data) => {
             if (data.error) {
@@ -254,7 +254,7 @@ const EditCaption = () => {
   } else {
     return (
       <div>
-        <h2>Add/Edit Movie</h2>
+        <h2>Başlık Aç</h2>
         <hr />
         {/* <pre>{JSON.stringify(movie, null, 3)}</pre> */}
 
@@ -262,7 +262,7 @@ const EditCaption = () => {
           <input type="hidden" name="id" value={movie.id} id="id"></input>
 
           <Input
-            title={"Title"}
+            title={"Başlık"}
             className={"form-control"}
             type={"text"}
             name={"title"}
@@ -274,19 +274,19 @@ const EditCaption = () => {
 
           <hr />
 
-          <h3>Genres</h3>
+          <h3>Tagler</h3>
 
-          {movie.genres && movie.genres.length > 1 && (
+          {movie.tags && movie.tags.length > 1 && (
             <>
-              {Array.from(movie.genres).map((g, index) => (
+              {Array.from(movie.tags).map((g, index) => (
                 <Checkbox
-                  title={g.genre}
-                  name={"genre"}
+                  title={g.tag}
+                  name={"tag"}
                   key={index}
-                  id={"genre-" + index}
+                  id={"tag-" + index}
                   onChange={(event) => handleCheck(event, index)}
                   value={g.id}
-                  checked={movie.genres[index].checked}
+                  checked={movie.tags[index].checked}
                 />
               ))}
             </>
