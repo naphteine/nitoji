@@ -14,7 +14,7 @@ const Genres = () => {
       headers: headers,
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/genres`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/tags`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -42,10 +42,10 @@ const Genres = () => {
               className="list-group-item list-group-item-action"
               to={`/konu/${g.id}`}
               state={{
-                genreName: g.genre,
+                genreName: g.tag,
               }}
             >
-              {g.genre}
+              {g.tag}
             </Link>
           ))}
         </div>

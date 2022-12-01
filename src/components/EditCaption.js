@@ -18,6 +18,7 @@ const EditCaption = () => {
   const [movie, setMovie] = useState({
     id: 0,
     title: "",
+    description: "",
     tags: [],
     tags_array: [Array(13).fill(false)],
   });
@@ -39,6 +40,7 @@ const EditCaption = () => {
       setMovie({
         id: 0,
         title: "",
+        description: "",
         tags: [],
         tags_array: [Array(13).fill(false)],
       });
@@ -177,7 +179,7 @@ const EditCaption = () => {
         if (data.error) {
           console.log(data.error);
         } else {
-          navigate("/manage-catalogue");
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -241,7 +243,7 @@ const EditCaption = () => {
             if (data.error) {
               console.log(data.error);
             } else {
-              navigate("/manage-catalogue");
+              navigate("/");
             }
           })
           .catch(err => { console.log(err) });
@@ -269,7 +271,18 @@ const EditCaption = () => {
             value={movie.title}
             onChange={handleChange("title")}
             errorDiv={hasError("title") ? "text-danger" : "d-none"}
-            errorMsg={"Please enter a title"}
+            errorMsg={"Lütfen başlık giriniz"}
+          />
+
+          <Input
+            title={"Açıklama (Okunuşlar)"}
+            className={"form-control"}
+            type={"text"}
+            name={"description"}
+            value={movie.description}
+            onChange={handleChange("description")}
+            errorDiv={hasError("description") ? "text-danger" : "d-none"}
+            errorMsg={"Lütfen açıklama giriniz"}
           />
 
           <hr />

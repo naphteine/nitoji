@@ -14,7 +14,7 @@ import Alert from "./components/Alert";
 import FeatherIcon from "feather-icons-react";
 import { FaRegUserCircle, FaRegNewspaper } from "react-icons/fa";
 import { BiMessageSquareAdd } from "react-icons/bi";
-import { HiLogout } from "react-icons/hi";
+import { HiLogout, HiAdjustments } from "react-icons/hi";
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import "./App.css";
 
@@ -137,6 +137,11 @@ function App() {
                   <BiMessageSquareAdd size={16} style={{ margin: 5 }} />
                 </Link>
 
+                <Link to="/mod" style={{ padding: 5 }}>
+                  Mod Paneli
+                  <HiAdjustments size={16} style={{ margin: 5 }} />
+                </Link>
+
                 <Link to="/profil" style={{ padding: 5 }}>
                   Profil
                   <RiAccountPinCircleFill size={16} style={{ margin: 5 }} />
@@ -167,7 +172,7 @@ function App() {
         </div>
       </div>
       <footer className="main-footer">
-        All rights reserved. Nitoji (c) {dateDisplay}.{" "}
+        Her hakkı saklıdır. Nitoji (c) {dateDisplay}.{" "}
         <a href="https://gguilt.com">gguilt</a>
       </footer>
     </div>

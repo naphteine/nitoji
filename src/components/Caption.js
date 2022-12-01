@@ -113,7 +113,7 @@ const Caption = () => {
   return (
     <div style={{ padding: 20 }} className="dict-entry">
       <h1>{movie.title}</h1>
-      <em>{movie.detail}</em>
+      {movie.description && <em>{movie.description.String}</em>}
       <br />
       {movie.tags.map((t) => (
         <span key={t.tag} className="badge bg-secondary me-2">

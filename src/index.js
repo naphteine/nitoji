@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         element: <EditCaption />,
       },
       {
-        path: "/manage-catalogue",
+        path: "/mod",
         element: <ManageCatalogue />,
       },
       {

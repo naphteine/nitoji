@@ -9,8 +9,9 @@ const ManageCatalogue = () => {
     useEffect(() => {
         if (jwtToken === "") {
             navigate("/uye");
-            return
+            return;
         }
+
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
         headers.append("Authorization", "Bearer " + jwtToken);
@@ -20,7 +21,7 @@ const ManageCatalogue = () => {
             headers: headers,
         }
 
-        fetch(`${process.env.REACT_APP_BACKEND}/admin/movies`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/user/captions`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 setMovies(data);
@@ -33,26 +34,17 @@ const ManageCatalogue = () => {
 
     return (
         <div>
-            <h2>Manage Catalogue</h2>
+            <h2>Mod Paneli</h2>
             <hr />
             <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Movie</th>
-                        <th>Release Date</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
                 <tbody>
                     {movies.map((m) => (
                         <tr key={m.id}>
                             <td>
-                                <Link to={`/admin/movie/${m.id}`}>
+                                <Link to={`/dict/${m.id}`}>
                                     {m.title}
                                 </Link>
                             </td>
-                            <td>{m.release_date}</td>
-                            <td>{m.mpaa_rating}</td>
                         </tr>
                     ))}
                 </tbody>

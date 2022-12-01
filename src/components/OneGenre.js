@@ -23,7 +23,7 @@ const OneGenre = () => {
     };
 
     fetch(
-      `${process.env.REACT_APP_BACKEND}/movies/genres/${id}`,
+      `${process.env.REACT_APP_BACKEND}/captions/tags/${id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -47,21 +47,12 @@ const OneGenre = () => {
 
       {movies.length > 0 ? (
         <table className="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>Başlık</th>
-              <th>Release Date</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
           <tbody>
             {movies.map((m) => (
               <tr key={m.id}>
                 <td>
-                  <Link to={`/baslik/${m.id}`}>{m.title}</Link>
+                  <Link to={`/dict/${m.id}`}>{m.title}</Link>
                 </td>
-                <td>{m.release_date}</td>
-                <td>{m.mpaa_rating}</td>
               </tr>
             ))}
           </tbody>
