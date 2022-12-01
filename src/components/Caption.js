@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import EntryArea from "./EntryArea";
 
-const Movie = () => {
+const Caption = () => {
   const [movie, setMovie] = useState({});
   const [entry, setEntry] = useState([]);
   const [newEntry, setNewEntry] = useState("");
@@ -137,4 +137,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default Caption;

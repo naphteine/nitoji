@@ -8,9 +8,10 @@ import Genres from "./components/Genres";
 import GraphQL from "./components/GraphQL";
 import Login from "./components/Login";
 import ManageCatalogue from "./components/ManageCatalogue";
-import Movies from "./components/Movies";
-import Movie from "./components/Movie";
+import Captions from "./components/Captions";
+import Caption from "./components/Caption";
 import OneGenre from "./components/OneGenre";
+import Profile from "./components/Profile";
 import "bootstrap/dist/css/bootstrap.css";
 
 const router = createBrowserRouter([
@@ -19,10 +20,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Movies /> },
+      { index: true, element: <Captions /> },
       {
         path: "/dict/:id",
-        element: <Movie />,
+        element: <Caption />,
       },
       {
         path: "/konular",
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         path: "/uye",
         element: <Login />,
       },
+      {
+        path: "/profil",
+        element: <Profile />,
+      }
     ],
   },
 ]);

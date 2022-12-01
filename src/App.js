@@ -15,6 +15,7 @@ import FeatherIcon from "feather-icons-react";
 import { FaRegUserCircle, FaRegNewspaper } from "react-icons/fa";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import { HiLogout } from "react-icons/hi";
+import { RiAccountPinCircleFill } from "react-icons/ri";
 import "./App.css";
 
 function App() {
@@ -134,6 +135,11 @@ function App() {
                 <Link to="/yeni" style={{ padding: 5 }}>
                   Başlık aç
                   <BiMessageSquareAdd size={16} style={{ margin: 5 }} />
+                </Link>
+
+                <Link to="/profil" style={{ padding: 5 }}>
+                  Profil
+                  <RiAccountPinCircleFill size={16} style={{ margin: 5 }} />
                 </Link>
 
                 <Link to="/" onClick={logOut} style={{ padding: 5 }}>
