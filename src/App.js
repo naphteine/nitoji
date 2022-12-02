@@ -123,6 +123,11 @@ function App() {
             <a href="https://japonesk.nitoji.com" style={{ padding: 5 }}>
               Japonesk <FaRegNewspaper size={16} style={{ margin: 5 }} />
             </a>
+
+            <Link to="/konular" style={{ padding: 5 }}>
+              Konular
+              <BiSearchAlt size={16} style={{ margin: 5 }} />
+            </Link>
           </span>
 
           <span className="text-end">
