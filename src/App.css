@@ -21,40 +21,11 @@
   margin: 0.3rem;
 }
 
-.dict-entry {
-  border: 1px solid black;
-  border-radius: 10px;
-  margin: 2rem;
-  padding: 1rem;
-}
-
-.entry {
-  font-family: "Noto Serif Khojki", serif;
-}
-
-.dict-entry :nth-last-child(1) {
-  border-bottom: none;
-}
-
-.entry-author {
-  font-weight: 300;
-  text-align: right;
-}
 
 .main-footer {
   text-align: center;
 }
 
-.dict-new {
-  border: 1px solid black;
-  padding: 1rem;
-  margin: 2rem;
-  border-radius: 10px;
-}
-
-.dict-entry {
-  padding: 1rem;
-}
 
 html body {
   margin-top: 6rem;
@@ -70,10 +41,6 @@ header {
   font-size: 1rem;
   text-decoration: none;
   color: black;
-}
-
-.dict {
-  font-family: "Kosugi", sans-serif;
 }
 
 body {

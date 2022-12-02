@@ -31,7 +31,7 @@ const EditCaption = () => {
 
   useEffect(() => {
     if (jwtToken === "") {
-      navigate("/uye");
+      navigate("/giris");
       return;
     }
 
@@ -179,7 +179,7 @@ const EditCaption = () => {
         if (data.error) {
           console.log(data.error);
         } else {
-          navigate("/");
+          navigate(`/dict/${movie.id}`);
         }
       })
       .catch((err) => {
@@ -243,7 +243,7 @@ const EditCaption = () => {
             if (data.error) {
               console.log(data.error);
             } else {
-              navigate("/");
+              navigate(`/dict/${movie.id}`);
             }
           })
           .catch(err => { console.log(err) });

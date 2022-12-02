@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import EntryArea from "./EntryArea";
+import styles from "./Caption.module.css";
 
 const Caption = () => {
   const [movie, setMovie] = useState({});
@@ -61,7 +62,38 @@ const Caption = () => {
           if (data.error) {
             console.log(data.error);
           } else {
-            navigate(`/dict/${movie.id}`)
+            console.log("heyoo");
+
+            const headers = new Headers();
+            headers.append("Content-Type", "application/json");
+
+            const requestOptions = {
+              method: "GET",
+              headers: headers,
+            };
+
+            fetch(`${process.env.REACT_APP_BACKEND}/captions/${id}`, requestOptions)
+              .then((response) => response.json())
+              .then((data) => {
+                setMovie(data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+
+            fetch(
+              `${process.env.REACT_APP_BACKEND}/entries/captions/${id}`,
+              requestOptions
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                if (data !== null) {
+                  setEntry(data);
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         })
         .catch((err) => {
@@ -111,9 +143,9 @@ const Caption = () => {
   }
 
   return (
-    <div style={{ padding: 20 }} className="dict-entry">
-      <h1>{movie.title}</h1>
-      {movie.description && <em>{movie.description.String}</em>}
+    <div style={{ padding: 20 }} className={styles["dict-entry"]}>
+      <h1 className={styles["dict-header"]}>{movie.title}</h1>
+      {movie.description && <em>{movie.description}</em>}
       <br />
       {movie.tags.map((t) => (
         <span key={t.tag} className="badge bg-secondary me-2">
@@ -121,15 +153,21 @@ const Caption = () => {
         </span>
       ))}
       <hr />
-      {jwtToken !== "" && (<EntryArea onChange={onChange} onSubmit={handleSubmit} />
+      {jwtToken !== "" && (
+        <>
+          <EntryArea onChange={onChange} onSubmit={handleSubmit} />
+          <hr />
+        </>
       )}
 
-      <div>
+      <div className={styles["entry-list"]}>
         {entry.map((e) => (
-          <div className="entry">
+          <div className={styles["entry"]}>
             {e.entry}
-            <div className="entry-author">{e.author}</div>
-            <div className="entry-detail">{e.detail}</div>
+            <div className={styles["entry-details"]}>
+              <div className={styles["entry-author"]}>{e.user_id}</div>
+              <div className={styles["entry-date"]}>{e.created_at}</div>
+            </div>
           </div>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import Input from "./form/Input";
 
 const Login = () => {
@@ -79,9 +79,9 @@ const Login = () => {
 
         <input type="submit" className="btn btn-primary" value="Giriş yap" />
 
-        <a href="#!" className="btn btn-info m-2">
+        <Link to="/kayit" className="btn btn-info m-2">
           Kayıt ol
-        </a>
+        </Link>
       </form>
     </div>
   );

@@ -13,7 +13,7 @@ import {
 import Alert from "./components/Alert";
 import FeatherIcon from "feather-icons-react";
 import { FaRegUserCircle, FaRegNewspaper } from "react-icons/fa";
-import { BiMessageSquareAdd } from "react-icons/bi";
+import { BiMessageSquareAdd, BiSearchAlt } from "react-icons/bi";
 import { HiLogout, HiAdjustments } from "react-icons/hi";
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import "./App.css";
@@ -124,9 +124,10 @@ function App() {
               Japonesk <FaRegNewspaper size={16} style={{ margin: 5 }} />
             </a>
           </span>
+
           <span className="text-end">
             {jwtToken === "" ? (
-              <Link to="/uye" style={{ padding: 5 }}>
+              <Link to="/giris" style={{ padding: 5 }}>
                 Üye
                 <FaRegUserCircle size={16} style={{ margin: 5 }} />
               </Link>

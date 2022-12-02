@@ -5,8 +5,8 @@ import App from "./App";
 import EditCaption from "./components/EditCaption";
 import ErrorPage from "./components/ErrorPage";
 import Genres from "./components/Genres";
-import GraphQL from "./components/GraphQL";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import ManageCatalogue from "./components/ManageCatalogue";
 import Captions from "./components/Captions";
 import Caption from "./components/Caption";
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
         element: <ManageCatalogue />,
       },
       {
-        path: "/graphql",
-        element: <GraphQL />,
+        path: "/giris",
+        element: <Login />,
       },
       {
-        path: "/uye",
-        element: <Login />,
+        path: "/kayit",
+        element: <Register />
       },
       {
         path: "/profil",
