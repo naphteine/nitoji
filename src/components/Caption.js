@@ -165,7 +165,7 @@ const Caption = () => {
           <div className={styles["entry"]}>
             {e.entry}
             <div className={styles["entry-details"]}>
-              <div className={styles["entry-author"]}>{e.user_id}</div>
+              <div className={styles["entry-author"]}>{e.user_name}</div>
               <div className={styles["entry-date"]}>{e.created_at}</div>
             </div>
           </div>

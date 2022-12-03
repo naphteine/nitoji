@@ -41,7 +41,7 @@ const Mod = () => {
                     {movies.map((m) => (
                         <tr key={m.id}>
                             <td>
-                                <Link to={`/dict/${m.id}`}>
+                                <Link to={`/mod/dict/${m.id}`}>
                                     {m.title}
                                 </Link>
                             </td>
