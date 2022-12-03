@@ -81,7 +81,7 @@ const Captions = () => {
 
     return (
         <div>
-            <h2>Sözlük</h2>
+            <h1>Sözlük</h1>
             <hr />
             <form onSubmit={handleChange}>
                 <Input

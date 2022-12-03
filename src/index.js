@@ -7,7 +7,7 @@ import ErrorPage from "./components/ErrorPage";
 import Genres from "./components/Genres";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import ManageCatalogue from "./components/ManageCatalogue";
+import Mod from "./components/Mod";
 import Captions from "./components/Captions";
 import Caption from "./components/Caption";
 import OneGenre from "./components/OneGenre";
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/mod",
-        element: <ManageCatalogue />,
+        element: <Mod />,
       },
       {
         path: "/giris",

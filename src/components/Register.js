@@ -8,7 +8,6 @@ const Register = () => {
     const [passwordRepeat, setPasswordRepeat] = useState("");
     const [username, setUsername] = useState("");
 
-    const { setJwtToken } = useOutletContext();
     const { setAlertClassName } = useOutletContext();
     const { setAlertMessage } = useOutletContext();
     const { toggleRefresh } = useOutletContext();
@@ -17,6 +16,12 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (password !== passwordRepeat) {
+            setAlertClassName("alert-danger");
+            setAlertMessage("Şifreler aynı değil!");
+            return;
+        }
 
         // build the request payload
         let payload = {
@@ -41,7 +46,6 @@ const Register = () => {
                     setAlertClassName("alert-danger");
                     setAlertMessage(data.message);
                 } else {
-                    setJwtToken(data.access_token);
                     setAlertClassName("d-none");
                     setAlertMessage("");
                     toggleRefresh(true);

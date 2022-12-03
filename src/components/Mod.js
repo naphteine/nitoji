@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
-const ManageCatalogue = () => {
+const Mod = () => {
     const [movies, setMovies] = useState([]);
     const { jwtToken } = useOutletContext();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (jwtToken === "") {
-            navigate("/uye");
+            navigate("/giris");
             return;
         }
 
@@ -34,7 +34,7 @@ const ManageCatalogue = () => {
 
     return (
         <div>
-            <h2>Mod Paneli</h2>
+            <h1>Mod Paneli</h1>
             <hr />
             <table className="table table-striped table-hover">
                 <tbody>
@@ -53,4 +53,4 @@ const ManageCatalogue = () => {
     )
 }
 
-export default ManageCatalogue;
+export default Mod;
