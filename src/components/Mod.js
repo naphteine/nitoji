@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import jwt from 'jwt-decode';
 
 const Mod = () => {
     const [movies, setMovies] = useState([]);
@@ -9,6 +10,13 @@ const Mod = () => {
     useEffect(() => {
         if (jwtToken === "") {
             navigate("/giris");
+            return;
+        }
+
+        let user = jwt(jwtToken);
+
+        if (user.role !== "mod" || user.role !== "admin") {
+            navigate(`/${user.role}`);
             return;
         }
 
