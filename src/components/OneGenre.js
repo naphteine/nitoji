@@ -7,7 +7,7 @@ const OneGenre = () => {
   const { genreName } = location.state;
 
   // set stateful variables
-  const [movies, setMovies] = useState([]);
+  const [captions, setCaptions] = useState([]);
 
   // get id from url
   let { id } = useParams();
@@ -31,7 +31,7 @@ const OneGenre = () => {
         if (data.error) {
           console.log(data.message);
         } else {
-          setMovies(data);
+          setCaptions(data);
         }
       })
       .catch((err) => {
@@ -45,10 +45,10 @@ const OneGenre = () => {
       <h2>Konu: {genreName}</h2>
       <hr />
 
-      {movies.length > 0 ? (
+      {captions.length > 0 ? (
         <table className="table table-striped table-hover">
           <tbody>
-            {movies.map((m) => (
+            {captions.map((m) => (
               <tr key={m.id}>
                 <td>
                   <Link to={`/dict/${m.id}`}>{m.title}</Link>
