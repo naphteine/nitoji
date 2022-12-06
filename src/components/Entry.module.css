@@ -1,0 +1,30 @@
+.entry {
+    font-family: "Noto Serif Khojki", serif;
+    padding: 2rem 0;
+    text-align: justify;
+    border: 1px solid gray;
+    border-left: 5px solid gray;
+
+    background-color: whitesmoke;
+    border-radius: 5px;
+    margin: 2rem 0;
+
+    padding-left: 1rem;
+}
+
+.entry-author {
+    font-weight: 300;
+}
+
+.entry-details {
+    text-align: right;
+    text-decoration: none;
+}
+
+.entry-date {
+    font-weight: 400;
+}
+
+.entry footer {
+    margin: 1rem;
+}

@@ -94,7 +94,7 @@ const EditCaption = () => {
 
           const checks = [];
 
-          data.tags.forEach((g) => {
+          data.tag.forEach((g) => {
             if (data.caption.tags_array.indexOf(g.id) !== -1) {
               checks.push({ id: g.id, checked: true, tag: g.tag });
             } else {
@@ -120,6 +120,7 @@ const EditCaption = () => {
     let errors = [];
     let required = [
       { field: caption.title, name: "title" },
+      { field: caption.description, name: "description" },
     ];
 
     required.forEach(function (obj) {

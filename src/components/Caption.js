@@ -3,6 +3,7 @@ import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import EntryArea from "./EntryArea";
 import styles from "./Caption.module.css";
+import Entry from "./Entry";
 
 const Caption = () => {
   const [movie, setMovie] = useState({});
@@ -162,13 +163,7 @@ const Caption = () => {
 
       <div className={styles["entry-list"]}>
         {entry.map((e) => (
-          <div className={styles["entry"]}>
-            {e.entry}
-            <div className={styles["entry-details"]}>
-              <div className={styles["entry-author"]}>{e.user_name}</div>
-              <div className={styles["entry-date"]}>{e.created_at}</div>
-            </div>
-          </div>
+          <Entry text={e.entry} id={e.user_id} author={e.user_name} date={e.created_at} />
         ))}
       </div>
     </div>

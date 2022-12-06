@@ -13,10 +13,10 @@ const Mod = () => {
             return;
         }
 
-        let user = jwt(jwtToken);
+        const user = jwt(jwtToken);
 
-        if (user.role !== "mod" || user.role !== "admin") {
-            navigate(`/${user.role}`);
+        if (user.role !== "mod" && user.role !== "admin") {
+            navigate("/");
             return;
         }
 

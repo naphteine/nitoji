@@ -12,6 +12,7 @@ import Captions from "./components/Captions";
 import Caption from "./components/Caption";
 import OneGenre from "./components/OneGenre";
 import Profile from "./components/Profile";
+import UserProfile from "./components/UserProfile";
 import "bootstrap/dist/css/bootstrap.css";
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profile />,
+      },
+      {
+        path: "/profile/:id",
+        element: <UserProfile />
       }
     ],
   },

@@ -16,7 +16,8 @@ import { FaRegUserCircle, FaRegNewspaper } from "react-icons/fa";
 import { BiMessageSquareAdd, BiSearchAlt } from "react-icons/bi";
 import { HiLogout, HiAdjustments } from "react-icons/hi";
 import { RiAccountPinCircleFill } from "react-icons/ri";
-import "./App.css";
+import styles from "./App.module.css";
+import jwt from "jwt-decode";
 
 function App() {
   const [jwtToken, setJwtToken] = useState("");
@@ -116,7 +117,7 @@ function App() {
       <header className="fixed-top">
         <nav style={{ margin: 10 }}>
           <span className="text-start">
-            <Link to="/" className="logo" style={{ padding: 5 }}>
+            <Link to="/" className={styles["logo"]} style={{ padding: 5 }}>
               日土辞書
             </Link>
 
@@ -143,11 +144,6 @@ function App() {
                   <BiMessageSquareAdd size={16} style={{ margin: 5 }} />
                 </Link>
 
-                <Link to="/mod" style={{ padding: 5 }}>
-                  Mod Paneli
-                  <HiAdjustments size={16} style={{ margin: 5 }} />
-                </Link>
-
                 <Link to="/profil" style={{ padding: 5 }}>
                   Profil
                   <RiAccountPinCircleFill size={16} style={{ margin: 5 }} />
@@ -159,6 +155,13 @@ function App() {
                 </Link>
               </>
             )}
+
+            {jwtToken && jwt(jwtToken).role && jwt(jwtToken).role === "mod" &&
+              <Link to="/mod" style={{ padding: 5 }}>
+                <b>Mod Paneli</b>
+                <HiAdjustments size={16} style={{ margin: 5 }} />
+              </Link>
+            }
           </span>
         </nav>
       </header>
@@ -177,7 +180,7 @@ function App() {
           />
         </div>
       </div>
-      <footer className="main-footer">
+      <footer className={styles["main-footer"]}>
         Her hakkı saklıdır. Nitoji (c) {dateDisplay}.{" "}
         <a href="https://gguilt.com">gguilt</a>
       </footer>
