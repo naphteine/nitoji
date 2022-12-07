@@ -8,7 +8,7 @@ const Entry = props => {
     return (
         <>
             <section className={styles["entry"]}>
-                {props.text}
+                <p className={styles.entry_text}>{props.text}</p>
                 <footer className={styles["entry-details"]}>
                     <Link to={`/profile/${props.id}`}>
                         <div className={styles["entry-author"]}>{props.author}</div>

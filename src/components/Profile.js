@@ -5,15 +5,14 @@ import jwt from 'jwt-decode';
 
 
 const Profile = () => {
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordRepeat, setNewPasswordRepeat] = useState("");
+    const [signature, setSignature] = useState("");
 
-    const [username, setUsername] = useState("");
-    const [entryCount, setEntryCount] = useState(0);
-    const [captionCount, setCaptionCount] = useState(0);
-    const [signature, setSignature] = useState("-");
+    const [userData, setUserData] = useState([]);
 
     const { setAlertClassName } = useOutletContext();
     const { setAlertMessage } = useOutletContext();
@@ -80,21 +79,20 @@ const Profile = () => {
         fetch(`${process.env.REACT_APP_BACKEND}/profile/${user.sub}`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                setSignature(data.signature.String);
-                setCaptionCount(data.caption_count);
-                setEntryCount(data.entry_count);
+                setUserData(data);
+                setUsername(data.user_name);
             });
     }, []);
 
     return (
         <div className="col-md-6 offset-md-3">
-            <h1>{user.name}</h1>
+            <h1>{userData.user_name}</h1>
 
             <hr />
-            <p>ID: {user.sub}</p>
-            <p>İmza : {signature}</p>
-            <p>Girdi sayısı: {entryCount}</p>
-            <p>Başlık sayısı: {captionCount}</p>
+            <p>ID: {userData.id}</p>
+            {userData.signature && <p>İmza : {userData.signature}</p>}
+            <p>Girdi sayısı: {userData.entry_count}</p>
+            <p>Başlık sayısı: {userData.caption_count}</p>
             <hr />
 
             <form onSubmit={handleSubmit}>
@@ -105,6 +103,15 @@ const Profile = () => {
                     name="email"
                     autoComplete="email-new"
                     onChange={(event) => setEmail(event.target.value)}
+                />
+
+                <Input
+                    title="İmza"
+                    type="signature"
+                    className="form-control"
+                    name="signature"
+                    autoComplete="signature-new"
+                    onChange={(event) => setSignature(event.target.value)}
                 />
 
                 <Input

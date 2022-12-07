@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Input from "./form/Input";
+import styles from "./Captions.module.css";
+import DictEntry from "./DictEntry";
 
 const Captions = () => {
     // set stateful variables
-    const [movies, setMovies] = useState([]);
+    const [captions, setCaptions] = useState([]);
     const [searchTerm, setSearchTerm] = useState([]);
     const [fullList, setFullList] = useState([]);
 
@@ -31,7 +32,7 @@ const Captions = () => {
             .then((response) => response.json())
             .then((response) => {
                 let theList = Object.values(response.data.search);
-                setMovies(theList);
+                setCaptions(theList);
             })
             .catch(err => { console.log(err) })
     }
@@ -45,7 +46,7 @@ const Captions = () => {
         if (value.length > 0) {
             performSearch(value);
         } else {
-            setMovies(fullList);
+            setCaptions(fullList);
         }
     }
 
@@ -73,7 +74,7 @@ const Captions = () => {
             .then((response) => response.json())
             .then((response) => {
                 let theList = Object.values(response.data.list);
-                setMovies(theList);
+                setCaptions(theList);
                 setFullList(theList);
             })
             .catch(err => (console.log(err)))
@@ -93,20 +94,14 @@ const Captions = () => {
                     onChange={handleChange} />
             </form>
 
-            {movies ? (
-                <table className="table table-striped table-hover">
-                    <tbody>
-                        {movies.map((m) => (
-                            <tr key={m.id}>
-                                <td>
-                                    <Link to={`/dict/${m.id}`}>
-                                        {m.title}
-                                    </Link>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            {captions ? (
+                <div className={styles.dict_table}>
+                    {captions.map((m) => (
+                        <DictEntry key={m.id} link={`/dict/${m.id}`}>
+                            {m.title}
+                        </DictEntry>
+                    ))}
+                </div>
             ) : (
                 <p>Sonuç bulunamadı!</p>
             )}

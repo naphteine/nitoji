@@ -6,7 +6,7 @@ import styles from "./Caption.module.css";
 import Entry from "./Entry";
 
 const Caption = () => {
-  const [movie, setMovie] = useState({});
+  const [caption, setCaption] = useState({});
   const [entry, setEntry] = useState([]);
   const [newEntry, setNewEntry] = useState("");
   let { id } = useParams();
@@ -31,7 +31,7 @@ const Caption = () => {
         cancelButtonText: "Geri dön",
       });
     } else {
-      console.log(movie.id);
+      console.log(caption.id);
       console.log(newEntry);
 
       // passed validation, so save changes
@@ -44,7 +44,7 @@ const Caption = () => {
 
       const requestBody = {
         entry: newEntry,
-        caption_id: movie.id,
+        caption_id: caption.id,
       };
 
       let requestOptions = {
@@ -55,7 +55,7 @@ const Caption = () => {
       };
 
       fetch(
-        `${process.env.REACT_APP_BACKEND}/user/entries/captions/${movie.id}`,
+        `${process.env.REACT_APP_BACKEND}/user/entries/captions/${caption.id}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -76,7 +76,7 @@ const Caption = () => {
             fetch(`${process.env.REACT_APP_BACKEND}/captions/${id}`, requestOptions)
               .then((response) => response.json())
               .then((data) => {
-                setMovie(data);
+                setCaption(data);
               })
               .catch((err) => {
                 console.log(err);
@@ -115,7 +115,7 @@ const Caption = () => {
     fetch(`${process.env.REACT_APP_BACKEND}/captions/${id}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setMovie(data);
+        setCaption(data);
       })
       .catch((err) => {
         console.log(err);
@@ -136,19 +136,19 @@ const Caption = () => {
       });
   }, [id]);
 
-  if (movie.tags) {
-    movie.tags = Object.values(movie.tags);
-    console.log(movie.tags);
+  if (caption.tags) {
+    caption.tags = Object.values(caption.tags);
+    console.log(caption.tags);
   } else {
-    movie.tags = [];
+    caption.tags = [];
   }
 
   return (
     <div style={{ padding: 20 }} className={styles["dict-entry"]}>
-      <h1 className={styles["dict-header"]}>{movie.title}</h1>
-      {movie.description && <em>{movie.description}</em>}
+      <h1 className={styles["dict-header"]}>{caption.title}</h1>
+      {caption.description && <em>{caption.description}</em>}
       <br />
-      {movie.tags.map((t) => (
+      {caption.tags.map((t) => (
         <span key={t.tag} className="badge bg-secondary me-2">
           {t.tag}
         </span>

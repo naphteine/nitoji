@@ -3,7 +3,7 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import jwt from 'jwt-decode';
 
 const Mod = () => {
-    const [movies, setMovies] = useState([]);
+    const [captions, setCaptions] = useState([]);
     const { jwtToken } = useOutletContext();
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const Mod = () => {
         fetch(`${process.env.REACT_APP_BACKEND}/user/captions`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                setMovies(data);
+                setCaptions(data);
             })
             .catch(err => {
                 console.log(err);
@@ -46,7 +46,7 @@ const Mod = () => {
             <hr />
             <table className="table table-striped table-hover">
                 <tbody>
-                    {movies.map((m) => (
+                    {captions.map((m) => (
                         <tr key={m.id}>
                             <td>
                                 <Link to={`/mod/dict/${m.id}`}>

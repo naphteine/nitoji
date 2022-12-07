@@ -1,0 +1,31 @@
+.dict_entry {
+    border: 1px solid black;
+    border-left: 0.5rem solid black;
+    border-right: 0.5rem solid black;
+
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+    font-family: "Kosugi", sans-serif;
+
+    transition: background 0.3s;
+    transition: color 0.3s;
+    transition: border 1s;
+}
+
+.dict_entry:hover {
+    border-left: 2rem solid black;
+    border-right: 2rem solid black;
+    background-color: gainsboro;
+    color: black;
+}
+
+.dict_link {
+    text-decoration: none;
+}
