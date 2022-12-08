@@ -11,7 +11,6 @@ import {
 } from "react-router-dom";
 
 import Alert from "./components/Alert";
-import FeatherIcon from "feather-icons-react";
 import { FaRegUserCircle, FaRegNewspaper } from "react-icons/fa";
 import { BiMessageSquareAdd, BiSearchAlt } from "react-icons/bi";
 import { HiLogout, HiAdjustments } from "react-icons/hi";
