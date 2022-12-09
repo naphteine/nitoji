@@ -80,7 +80,7 @@ const Login = () => {
         <input type="submit" className="btn btn-primary" value="Giriş yap" />
 
         <Link to="/kayit" className="btn btn-info m-2">
-          Kayıt ol
+          Kaydol
         </Link>
       </form>
     </div>

@@ -133,7 +133,7 @@ function App() {
           <span className="text-end">
             {jwtToken === "" ? (
               <Link to="/giris" style={{ padding: 5 }}>
-                Üye
+                Kayıt/Giriş
                 <FaRegUserCircle size={16} style={{ margin: 5 }} />
               </Link>
             ) : (

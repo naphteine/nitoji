@@ -101,7 +101,7 @@ const Register = () => {
 
                 <hr />
 
-                <input type="submit" className="btn btn-info" value="Kayıt ol" />
+                <input type="submit" className="btn btn-info" value="Kaydol" />
 
                 <Link to="/giris" className="btn btn-primary m-2">
                     Giriş yap
