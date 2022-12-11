@@ -116,11 +116,11 @@ function App() {
               日土辞書
             </Link>
 
-            <a href="https://japonesk.nitoji.com" style={{ padding: 5 }}>
+            <a className={styles["link"]} href="https://japonesk.nitoji.com">
               Japonesk <FaRegNewspaper size={16} style={{ margin: 5 }} />
             </a>
 
-            <Link to="/konular" style={{ padding: 5 }}>
+            <Link className={styles["link"]} to="/konular">
               Konular
               <BiSearchAlt size={16} style={{ margin: 5 }} />
             </Link>
@@ -128,13 +128,13 @@ function App() {
 
           <span className="text-end">
             {jwtToken === "" ? (
-              <Link to="/giris" style={{ padding: 5 }}>
+              <Link className={styles["link"]} to="/giris">
                 Kayıt/Giriş
                 <FaRegUserCircle size={16} style={{ margin: 5 }} />
               </Link>
             ) : (
               <>
-                <Link to="/yeni" style={{ padding: 5 }}>
+                <Link className={styles["link"]} to="/yeni">
                   Başlık aç
                   <BiMessageSquareAdd size={16} style={{ margin: 5 }} />
                 </Link>

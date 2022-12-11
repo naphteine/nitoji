@@ -34,16 +34,38 @@ html body {
 
 header {
   background-color: #fff;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
 }
 
 .logo {
   font-family: "Potta One", cursive;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-decoration: none;
-  color: black;
+  color: #f33;
+  margin-right: 3rem;
+}
+
+.logo:hover {
+  color: #000;
 }
 
 body {
   font-family: "Open Sans", sans-serif;
+}
+
+.link {
+  background: #f7baba;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.5s;
+  margin-right: 1rem;
+  padding: 0.3rem;
+  border: 1px solid #f7baba;
+}
+
+.link:hover {
+  background: #fff;
+  color: #f33;
+  border: 1px solid #f33;
 }
