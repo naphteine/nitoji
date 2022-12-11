@@ -80,36 +80,32 @@ function App() {
     [tickInterval]
   );
 
-  useEffect(
-    () => {
-      if (jwtToken === "") {
-        const requestOptions = {
-          method: "GET",
-          credentials: "include",
-        };
+  useEffect(() => {
+    if (jwtToken === "") {
+      const requestOptions = {
+        method: "GET",
+        credentials: "include",
+      };
 
-        fetch(`${process.env.REACT_APP_BACKEND}/refresh`, requestOptions)
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.access_token) {
-              setJwtToken(data.access_token);
-              toggleRefresh(true);
-            }
-          })
-          .catch((error) => {
-            console.log("user is not logged in", error);
-          });
-      }
+      fetch(`${process.env.REACT_APP_BACKEND}/refresh`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.access_token) {
+            setJwtToken(data.access_token);
+            toggleRefresh(true);
+          }
+        })
+        .catch((error) => {
+          console.log("user is not logged in", error);
+        });
+    }
 
-      const newDate = new Date();
-      const currentYear = newDate.getFullYear();
-      if (dateDisplay !== `${currentYear}`) {
-        setDateDisplay(`${dateDisplay}-${currentYear}`);
-      }
-    },
-    [jwtToken, toggleRefresh],
-    dateDisplay
-  );
+    const newDate = new Date();
+    const currentYear = newDate.getFullYear();
+    if (dateDisplay !== `${currentYear}`) {
+      setDateDisplay(`${dateDisplay}-${currentYear}`);
+    }
+  }, [jwtToken, toggleRefresh]);
 
   return (
     <div className="container">
@@ -155,12 +151,12 @@ function App() {
               </>
             )}
 
-            {jwtToken && jwt(jwtToken).role && jwt(jwtToken).role === "mod" &&
+            {jwtToken && jwt(jwtToken).role && jwt(jwtToken).role === "mod" && (
               <Link to="/mod" style={{ padding: 5 }}>
                 <b>Mod Paneli</b>
                 <HiAdjustments size={16} style={{ margin: 5 }} />
               </Link>
-            }
+            )}
           </span>
         </nav>
       </header>
