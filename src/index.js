@@ -13,6 +13,7 @@ import Caption from "./components/Caption";
 import OneGenre from "./components/OneGenre";
 import Profile from "./components/Profile";
 import UserProfile from "./components/UserProfile";
+import MultipleCaptions from "./components/MultipleCaptions";
 import "bootstrap/dist/css/bootstrap.css";
 
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/yeni",
         element: <EditCaption />,
+      },
+      {
+	path: "/toplu",
+	element: <MultipleCaptions />,
       },
       {
         path: "/mod/dict/:id",
