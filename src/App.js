@@ -1,12 +1,7 @@
 import { React, useEffect, useState, useCallback } from "react";
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
   Link,
-  NavLink,
   Outlet,
-  useParams,
   useNavigate,
 } from "react-router-dom";
 
@@ -105,7 +100,7 @@ function App() {
     if (dateDisplay !== `${currentYear}`) {
       setDateDisplay(`${dateDisplay}-${currentYear}`);
     }
-  }, [jwtToken, toggleRefresh]);
+  }, [jwtToken, toggleRefresh, dateDisplay]);
 
   return (
     <div className="container">
@@ -139,12 +134,12 @@ function App() {
                   <BiMessageSquareAdd size={16} style={{ margin: 5 }} />
                 </Link>
 
-                <Link to="/profil" style={{ padding: 5 }}>
+                <Link to="/profil" className={styles["link"]}>
                   Profil
                   <RiAccountPinCircleFill size={16} style={{ margin: 5 }} />
                 </Link>
 
-                <Link to="/" onClick={logOut} style={{ padding: 5 }}>
+                <Link to="/" onClick={logOut} className={styles["link"]}>
                   Çıkış
                   <HiLogout size={16} style={{ margin: 5 }} />
                 </Link>
@@ -152,7 +147,7 @@ function App() {
             )}
 
             {jwtToken && jwt(jwtToken).role && jwt(jwtToken).role === "mod" && (
-              <Link to="/mod" style={{ padding: 5 }}>
+              <Link to="/mod" className={styles["link"]}>
                 <b>Mod Paneli</b>
                 <HiAdjustments size={16} style={{ margin: 5 }} />
               </Link>

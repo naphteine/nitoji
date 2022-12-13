@@ -172,7 +172,11 @@ const EditCaption = () => {
         if (data.error) {
           console.log(data.error);
         } else {
-          navigate(`/dict/${caption.id}`);
+          if (caption.id !== 0) {
+            navigate(`/dict/${caption.id}`);
+          } else {
+            navigate("/");
+          }
         }
       })
       .catch((err) => {

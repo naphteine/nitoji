@@ -1,71 +1,72 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
-import Input from "./form/Input";
+import { useOutletContext } from "react-router-dom";
 import jwt from 'jwt-decode';
 
 
 const Profile = () => {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [newPasswordRepeat, setNewPasswordRepeat] = useState("");
-    const [signature, setSignature] = useState("");
+    // const [username, setUsername] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [newPassword, setNewPassword] = useState("");
+    // const [newPasswordRepeat, setNewPasswordRepeat] = useState("");
+    // const [signature, setSignature] = useState("");
 
     const [userData, setUserData] = useState([]);
 
-    const { setAlertClassName } = useOutletContext();
-    const { setAlertMessage } = useOutletContext();
-    const { toggleRefresh } = useOutletContext();
+    // const { setAlertClassName } = useOutletContext();
+    // const { setAlertMessage } = useOutletContext();
+    // const { toggleRefresh } = useOutletContext();
 
     const { jwtToken } = useOutletContext();
     const user = jwt(jwtToken);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        if (newPassword !== newPasswordRepeat) {
-            setAlertClassName("alert-danger");
-            setAlertMessage("Şifreler aynı değil!");
-            return;
-        }
-
-        // build the request payload
-        let payload = {
-            email: email,
-            password: password,
-            user_name: username,
-        };
-
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify(payload),
-        };
-
-        fetch(`${process.env.REACT_APP_BACKEND}/register`, requestOptions)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.error) {
-                    setAlertClassName("alert-danger");
-                    setAlertMessage(data.message);
-                } else {
-                    setAlertClassName("d-none");
-                    setAlertMessage("");
-                    toggleRefresh(true);
-                    navigate("/");
-                }
-            })
-            .catch((error) => {
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    /*
+            if (newPassword !== newPasswordRepeat) {
                 setAlertClassName("alert-danger");
-                setAlertMessage(error);
-            });
+                setAlertMessage("Şifreler aynı değil!");
+                return;
+            }
+            
+
+    // build the request payload
+    let payload = {
+        email: email,
+        password: password,
+        user_name: username,
     };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(payload),
+    };
+
+    fetch(`${process.env.REACT_APP_BACKEND}/register`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.error) {
+                setAlertClassName("alert-danger");
+                setAlertMessage(data.message);
+            } else {
+                setAlertClassName("d-none");
+                setAlertMessage("");
+                toggleRefresh(true);
+                navigate("/");
+            }
+        })
+        .catch((error) => {
+            setAlertClassName("alert-danger");
+            setAlertMessage(error);
+        });
+    */
+    // };
 
     useEffect(() => {
         const headers = new Headers();
@@ -80,21 +81,20 @@ const Profile = () => {
             .then((response) => response.json())
             .then((data) => {
                 setUserData(data);
-                setUsername(data.user_name);
             });
-    }, []);
+    }, [user.sub]);
 
     return (
         <div className="col-md-6 offset-md-3">
-            <h1>{userData.user_name}</h1>
+            <h1>{userData.user_name} ({user.name})</h1>
 
             <hr />
-            <p>ID: {userData.id}</p>
+            <p>ID: {userData.id} ({user.sub})</p>
             {userData.signature && <p>İmza : {userData.signature}</p>}
             <p>Girdi sayısı: {userData.entry_count}</p>
             <p>Başlık sayısı: {userData.caption_count}</p>
             <hr />
-
+            { /*
             <form onSubmit={handleSubmit}>
                 <Input
                     title="Email Adresi"
@@ -144,6 +144,7 @@ const Profile = () => {
 
                 <input type="submit" className="btn btn-info" value="Güncelle" />
             </form>
+    */}
         </div>
     );
 };
