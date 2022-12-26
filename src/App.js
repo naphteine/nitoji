@@ -172,7 +172,7 @@ function App() {
       </div>
       <footer className={styles["main-footer"]}>
         Her hakkı saklıdır. Nitoji (c) {dateDisplay}.{" "}
-        <a href="https://gguilt.com">gguilt</a>
+        <a href="https://gokaygultekin.dev">Gökay Gültekin</a>
       </footer>
     </div>
   );
