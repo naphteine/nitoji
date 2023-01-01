@@ -18,7 +18,6 @@ function App() {
   const [alertMessage, setAlertMessage] = useState("");
   const [alertClassName, setAlertClassName] = useState("d-none");
   const [tickInterval, setTickInterval] = useState();
-  const [dateDisplay, setDateDisplay] = useState("2022");
 
   const navigate = useNavigate();
 
@@ -94,13 +93,7 @@ function App() {
           console.log("user is not logged in", error);
         });
     }
-
-    const newDate = new Date();
-    const currentYear = newDate.getFullYear();
-    if (dateDisplay !== `${currentYear}`) {
-      setDateDisplay(`${dateDisplay}-${currentYear}`);
-    }
-  }, [jwtToken, toggleRefresh, dateDisplay]);
+  }, [jwtToken, toggleRefresh]);
 
   return (
     <div className="container">
@@ -171,8 +164,7 @@ function App() {
         </div>
       </div>
       <footer className={styles["main-footer"]}>
-        Her hakkı saklıdır. Nitoji (c) {dateDisplay}.{" "}
-        <a href="https://gokaygultekin.dev">Gökay Gültekin</a>
+        Her hakkı saklıdır. Nitoji (c) 2022-2023. <a href="https://gokaygultekin.dev">Gökay Gültekin</a>
       </footer>
     </div>
   );
