@@ -1,0 +1,14 @@
+.header {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+
+.buttons {
+    display: flex;
+}
