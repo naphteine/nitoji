@@ -13,15 +13,19 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const getStaticProps = async () => {
   const { data: captions } = await supabase.from('captions').select('*').order('created_at', { ascending: false }).limit(20)
+  const { data: entries } = await supabase.from('entries').select('*').order('created_at', { ascending: false }).limit(20)
 
   return {
     props: {
       captions,
+      entries,
     },
   };
 };
 
-export default function Home({ captions }) {
+export default function Home({ captions, entries }) {
+  console.log(entries);
+
   return (
     <>
       <Head>
@@ -33,12 +37,24 @@ export default function Home({ captions }) {
       <Header />
 
       <main className={styles.main}>
-        <h1 className="text-3xl font-bold underline">Son açılan başlıklar</h1>
 
         <SearchBar />
-        {captions.map((caption) => {
-          return <Link href={`/dict/${caption.id}`}><div>{caption.title}</div></Link>
-        })}
+
+        <div className={styles.captionlist}>
+          <h1 className="text-3xl font-bold underline">Son açılan başlıklar</h1>
+
+          {captions.map((caption) => {
+            return <div className={styles.captionlist_item}><Link href={`/dict/${caption.id}`}>{caption.title}</Link></div>
+          })}
+        </div>
+
+        <div className={styles.entrylist}>
+          <h1 className="text-3xl font-bold underline">Son entryler</h1>
+
+          {entries.map((entry) => {
+            return <div className={styles.entrylist_item}><Link href={`/dict/${entry.caption_id}`}>{entry.entry}</Link></div>
+          })}
+        </div>
       </main>
 
       <Footer />
