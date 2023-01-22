@@ -1,6 +1,5 @@
 .entrylist {
-    color: white;
-    background-color: crimson;
+    color: var(--color-dark)
 }
 
 .entrylist h2 {

@@ -36,7 +36,7 @@ export default function Home({ entries }: [""]) {
 
       <main className={styles.main}>
         <div className={styles.entrylist}>
-          <h2>Son entryler</h2>
+          <h2>Son girdiler</h2>
 
           {entries.map((entry: { caption_id: number; entry: string; }) => {
             return <div className={styles.entrylist_item}><Link href={`/dict/${entry.caption_id}`}>{getCaptionTitle(entry.caption_id)} {entry.entry}</Link></div>
