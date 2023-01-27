@@ -1,10 +1,12 @@
-import styles from "./Footer.module.css";
+import styles from "../styles/Footer.module.css";
 
-export default function Footer() {
+const Footer = () => {
     return (
-        <footer className={styles.footer}>
-            Her hakkı saklıdır (c) 2022-2023. Nitoji
+        <footer>
+            Tüm hakları saklıdır. (c) 2022-2023. Nitoji
             <a href="https://gokaygultekin.dev">GG</a>
         </footer>
-    );
+    )
 }
+
+export default Footer;

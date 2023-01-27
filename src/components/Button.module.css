@@ -1,9 +1,0 @@
-.button {
-    padding: 1rem;
-    transition: all 0.1s;
-}
-
-.button:hover {
-    background-color: var(--color-active);
-    color: var(--color-light)
-}

@@ -1,20 +1,11 @@
-import Button from "./Button";
-import styles from "./Header.module.css";
-import SearchBar from "./SearchBar";
+import styles from "../styles/Header.module.css";
 
-export default function Header() {
+const Header = () => {
     return (
-        <header className={styles.header}>
-            <div className={styles.logo}>日土辞書</div>
-
-            <div className={styles.search}>
-                <SearchBar />
-            </div>
-
-            <div className={styles.buttons}>
-                <Button>Giriş</Button>
-                <Button>Kayıt</Button>
-            </div>
+        <header>
+            日土辞書
         </header>
     )
 }
+
+export default Header;
