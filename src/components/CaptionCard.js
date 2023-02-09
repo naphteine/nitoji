@@ -8,7 +8,7 @@ import { formatDistanceToNow } from "date-fns/";
 
 const CaptionCard = ({ data, handleDelete }) => {
   return (
-    <div className={styles.workoutContainer}>
+    <div className={styles.captionContainer}>
       {data?.map((item) => (
         <div key={item.id} className={styles.container}>
           <p className={styles.title}>
@@ -16,12 +16,12 @@ const CaptionCard = ({ data, handleDelete }) => {
             Başlık: {""}
             {item.title}
           </p>
-          <p className={styles.load}>
+          <p className={styles.desc}>
             {" "}
             Okunuş: {"  "}
             {item.loads}
           </p>
-          <p className={styles.reps}>Reps:{item.reps}</p>
+          <p className={styles.translation}>Türkçe: {item.reps}</p>
           <p className={styles.time}>
             created:{" "}
             {formatDistanceToNow(new Date(item.inserted_at), {

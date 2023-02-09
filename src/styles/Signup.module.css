@@ -11,6 +11,8 @@
     flex-direction: column;
     justify-content: space-evenly;
     box-shadow: 3px 3px 10px gray;
+    max-width: 500px;
+    max-height: 500px;
     background-color: white;
     height: 50%;
     width: 50%;
