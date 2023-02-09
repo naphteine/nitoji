@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "../styles/Login.module.css";
 import { supabase } from "../lib/supabase";
+import Button from "../components/Button";
+import Card from "../components/Card";
 
 const Login = () => {
   const initialState = {
@@ -20,8 +22,7 @@ const Login = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.formContainer}>
+    <Card>
         <input
           type="text"
           value={email}
@@ -38,7 +39,7 @@ const Login = () => {
           className={styles.input}
           placeholder="Şifrenizi giriniz"
         />
-        <button
+        <Button
           onClick={async () => {
             const { data: { user }, error } = await supabase.auth.signInWithPassword({
               email,
@@ -51,9 +52,8 @@ const Login = () => {
           className={styles.button}
         >
           Giriş yap
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Card>
   );
 };
 

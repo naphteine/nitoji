@@ -1,0 +1,19 @@
+.card {
+    background-color: whitesmoke;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 3px 3px 10px gray;
+    background-color: white;
+    height: 50%;
+    width: 50%;
+    padding: 10vh 10vw;
+    border-radius: 90px;
+}

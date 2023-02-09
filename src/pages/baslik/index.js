@@ -1,7 +1,9 @@
-import { supabase } from "../lib/supabase";
-import { useState, useEffect } from "react";
-import styles from "../styles/Create.module.css";
 import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import Card from "../../components/Card";
+import Button from "../../components/Button"
+import { supabase } from "../../lib/supabase";
+import styles from "../../styles/Create.module.css";
 
 const Create = () => {
   const initialState = {
@@ -38,15 +40,15 @@ const Create = () => {
         user_id: user?.id,
       })
       .single();
+      
     alert("Başlık başarıyla yaratıldı");
     setWorkoutData(initialState);
     router.push("/");
   };
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.form}>
+    <React.Fragment>
+      <Card>
           <p className={styles.title}>Yeni Başlık Aç</p>
           <label className={styles.label}>Başlık</label>
           <input
@@ -67,12 +69,9 @@ const Create = () => {
             placeholder="Açıklama giriniz"
           />
 
-          <button className={styles.button} onClick={createWorkout}>
-            Başlık Aç
-          </button>
-        </div>
-      </div>
-    </>
+          <Button onClick={createWorkout}>Başlık Aç</Button>
+      </Card>
+    </React.Fragment>
   );
 };
 

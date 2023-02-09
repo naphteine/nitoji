@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "../components/Button";
+import Card from "../components/Card";
 import { supabase } from "../lib/supabase";
 import styles from "../styles/Signup.module.css";
 
@@ -16,8 +18,7 @@ const Signup = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.formContainer}>
+    <Card>
         <input
           type="text"
           value={email}
@@ -34,7 +35,7 @@ const Signup = () => {
           className={styles.input}
           placeholder="Şifrenizi giriniz"
         />
-        <button
+        <Button
           onClick={async () => {
             const { error } = await supabase.auth.signUp({
               email,
@@ -48,9 +49,8 @@ const Signup = () => {
           className={styles.button}
         >
           Kayıt
-        </button>
-      </div>
-    </div>
+        </Button>
+    </Card>
   );
 };
 
