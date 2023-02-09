@@ -64,7 +64,7 @@ const Edit = () => {
           name="title"
           value={workout?.title}
           onChange={handleOnChange}
-          className={styles.updateInput}
+          className={styles.input}
         />
         <label className={styles.label}>Okunuş:</label>
         <input
@@ -72,10 +72,10 @@ const Edit = () => {
           name="loads"
           value={workout?.loads}
           onChange={handleOnChange}
-          className={styles.updateInput}
+          className={styles.input}
         />
 
-        <button onClick={updateWorkout} className={styles.updateButton}>
+        <button onClick={updateWorkout} className={styles.button}>
           Güncelle
         </button>
       </div>
