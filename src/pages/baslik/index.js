@@ -68,6 +68,15 @@ const Create = () => {
             className={styles.input}
             placeholder="Açıklama giriniz"
           />
+          <label className={styles.label}>Türkçe</label>
+          <input
+            type="text"
+            name="reps"
+            value={reps}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="Türkçe çeviri giriniz"
+          />
 
           <Button onClick={createWorkout}>Başlık Aç</Button>
       </Card>
