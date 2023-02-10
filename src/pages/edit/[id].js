@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Edit.module.css";
 import { supabase } from "../../lib/supabase";
 
-const Edit = () => {
+const Edit = ({ session }) => {
   const [workout, setWorkout] = useState(null);
   const router = useRouter();
 
@@ -33,9 +33,9 @@ const Edit = () => {
     const { title, loads, reps } = workout;
     
     const { data: { session }, } = await supabase.auth.getSession();
-    const { user } = session | null;
+    const { user } = session;
 
-    if (!user) {
+    if (!session?.user) {
       alert("Giriş yapınız!");
       return;
     }
