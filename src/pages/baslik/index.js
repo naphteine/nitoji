@@ -13,15 +13,15 @@ const Create = () => {
   };
 
   const router = useRouter();
-  const [workoutData, setWorkoutData] = useState(initialState);
+  const [captionData, setCaptionData] = useState(initialState);
 
-  const { title, loads, reps } = workoutData;
+  const { title, loads, reps } = captionData;
 
   const handleChange = (e) => {
-    setWorkoutData({ ...workoutData, [e.target.name]: e.target.value });
+    setCaptionData({ ...captionData, [e.target.name]: e.target.value });
   };
 
-  const createWorkout = async () => {
+  const createCaption = async () => {
     const { data: { session }, } = await supabase.auth.getSession();
 
     const { user } = session;
@@ -32,7 +32,7 @@ const Create = () => {
     }
 
     const { data, error } = await supabase
-      .from("workouts")
+      .from("captions")
       .insert({
         title,
         loads,
@@ -42,7 +42,7 @@ const Create = () => {
       .single();
       
     alert("Başlık başarıyla yaratıldı");
-    setWorkoutData(initialState);
+    setCaptionData(initialState);
     router.push("/");
   };
 
@@ -78,7 +78,7 @@ const Create = () => {
             placeholder="Türkçe çeviri giriniz"
           />
 
-          <Button onClick={createWorkout}>Başlık Aç</Button>
+          <Button onClick={createCaption}>Başlık Aç</Button>
       </Card>
     </React.Fragment>
   );

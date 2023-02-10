@@ -4,44 +4,50 @@ import styles from "../../styles/Edit.module.css";
 import { supabase } from "../../lib/supabase";
 
 const Edit = ({ session }) => {
-  const [workout, setWorkout] = useState(null);
+  const [caption, setCaption] = useState(null);
   const router = useRouter();
 
   const { id } = router.query;
   useEffect(() => {
-    const getWorkout = async () => {
+    const getCaption = async () => {
       if (!id) return;
 
       const { data } = await supabase
-        .from("workouts")
+        .from("captions")
         .select("*")
         .filter("id", "eq", id)
         .single();
-      setWorkout(data);
+      setCaption(data);
     };
-    getWorkout();
+    getCaption();
   }, [id]);
 
   const handleOnChange = (e) => {
-    setWorkout({
-      ...workout,
+    setCaption({
+      ...caption,
       [e.target.name]: e.target.value,
     });
   };
 
-  const updateWorkout = async () => {
-    const { title, loads, reps } = workout;
+  const updateCaption = async () => {
+    const { title, loads, reps } = caption;
     
     const { data: { session }, } = await supabase.auth.getSession();
-    const { user } = session;
 
-    if (!session?.user) {
+    if (session == null) {
       alert("Giriş yapınız!");
       return;
     }
 
+    const { user } = session;
+
+    if (user == null) {
+      alert("Giriş yapın!");
+      return;
+    }
+
     const { data } = await supabase
-      .from("workouts")
+      .from("captions")
       .update({
         title,
         loads,
@@ -62,7 +68,7 @@ const Edit = ({ session }) => {
         <input
           type="text"
           name="title"
-          value={workout?.title}
+          value={caption?.title}
           onChange={handleOnChange}
           className={styles.input}
         />
@@ -70,12 +76,12 @@ const Edit = ({ session }) => {
         <input
           type="text"
           name="loads"
-          value={workout?.loads}
+          value={caption?.loads}
           onChange={handleOnChange}
           className={styles.input}
         />
 
-        <button onClick={updateWorkout} className={styles.button}>
+        <button onClick={updateCaption} className={styles.button}>
           Güncelle
         </button>
       </div>

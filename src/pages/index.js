@@ -11,17 +11,17 @@ export default function Home({ session }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchWorkouts();
+    fetchCaptions();
   }, []);
 
-  const fetchWorkouts = async () => {
+  const fetchCaptions = async () => {
     const { data: { session }, } = await supabase.auth.getSession();
     const { user } = session | null;
 
     try {
       setLoading(true);
       const { data, error } = await supabase
-        .from("workouts")
+        .from("captions")
         .select("*");
 
       if (error) throw error;
@@ -48,11 +48,11 @@ export default function Home({ session }) {
       }
 
       const { data, error } = await supabase
-        .from("workouts")
+        .from("captions")
         .delete()
         .eq("id", id)
         .eq("user_id", user?.id);
-      fetchWorkouts();
+      fetchCaptions();
       if (error) throw error;
       alert("Başlık başarıyla silindi");
     } catch (error) {
@@ -71,12 +71,12 @@ export default function Home({ session }) {
 
           <div>
             {session?.user &&
-            <p className={styles.workoutHeading}>
+            <p className={styles.captionHeading}>
               Tekrar hoşgeldin, <span className={styles.email}>{session.user.email}</span>
             </p>
 }
             {data?.length === 0 ? (
-              <div className={styles.noWorkout}>
+              <div className={styles.noCaption}>
                 <p>Henüz bir başlık yok...</p>
                 <Link href="/create">
                   <button className={styles.button}>
@@ -87,7 +87,7 @@ export default function Home({ session }) {
               </div>
             ) : (
               <div>
-                <p className={styles.workoutHeading}>Başlıklar</p>
+                <p className={styles.captionHeading}>Başlıklar</p>
                 {data.map((d) => {
                   {d.title}
                 })}
