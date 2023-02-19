@@ -1,0 +1,25 @@
+.entry-list {
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+
+.dict-header {
+    font-family: "Kosugi", sans-serif;
+}
+
+
+.dict-new {
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 10px;
+}
+
+
+.dict-entry {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 1rem;
+}
