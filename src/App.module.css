@@ -41,7 +41,7 @@ header {
   font-family: "Potta One", cursive;
   font-size: 1.1rem;
   text-decoration: none;
-  color: #f33;
+  color: #222;
   margin-right: 3rem;
 }
 
@@ -54,18 +54,18 @@ body {
 }
 
 .link {
-  background: #f7baba;
+  background: #00000011;
   border-radius: 10px;
   text-decoration: none;
-  color: #000;
+  color: black;
   transition: all 0.5s;
   margin-right: 1rem;
   padding: 0.3rem;
-  border: 1px solid #f7baba;
+  border: 1px solid #00000011;
 }
 
 .link:hover {
   background: #fff;
-  color: #f33;
-  border: 1px solid #f33;
+  color: black;
+  border: 1px solid #00000055;
 }
