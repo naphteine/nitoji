@@ -23,8 +23,9 @@
 
 
 .main-footer {
-  text-align: center;
-  margin: 3rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0;
 }
 
 
@@ -47,6 +48,7 @@ header {
 
 .logo:hover {
   color: #000;
+  text-decoration: dotted underline;
 }
 
 body {

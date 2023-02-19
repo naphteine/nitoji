@@ -164,7 +164,8 @@ function App() {
         </div>
       </div>
       <footer className={styles["main-footer"]}>
-        Her hakkı saklıdır. Nitoji (c) 2022-2023. <a href="https://gokaygultekin.dev">Gökay Gültekin</a>
+        Tüm hakları saklıdır. Nitoji (c) 2022-2023.
+        <a href="https://gokaygultekin.dev">GG</a>
       </footer>
     </div>
   );
