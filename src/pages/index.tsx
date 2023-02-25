@@ -24,7 +24,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.captionList}>
           <article className={styles.captionItem}>
-            <header>
+            <header title="Kanji">
               <ruby>
                 漢<rt>かん</rt>
               </ruby>
@@ -44,6 +44,27 @@ export default function Home() {
               <li>Çin karakterleri</li>
               <li>Han Hanedanlığı yazım sistemi</li>
             </ol>
+          </article>
+
+          <article className={styles.kanjiItem}>
+            <header>
+              <ruby>
+                漢<rt>かん</rt>
+              </ruby>
+            </header>
+            <div>
+              <div className={styles.badgeList}>
+                <span className={styles.badge}>jlpt n4</span>
+                <span className={styles.badge}>常用</span>
+                <span className={styles.badge}>grade 3</span>
+              </div>
+              <b>On okunuşu:</b> <span title="kan">カン</span>
+              <h3>Çeviriler</h3>
+              <ol>
+                <li>Çin</li>
+                <li>Han Hanedanlığı (M.Ö. 202 - M.S. 220)</li>
+              </ol>
+            </div>
           </article>
         </div>
       </main>

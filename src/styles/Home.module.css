@@ -63,6 +63,30 @@
   border-bottom: 1px solid gray;
 }
 
+.kanjiItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: whitesmoke;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  padding: 1rem;
+  filter: none;
+}
+
+.kanjiItem:hover {
+  filter: invert(0.9);
+}
+
+.kanjiItem header {
+  font-size: 3rem;
+  font-weight: 800;
+  color: black;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  border-right: 1px solid gray;
+}
+
 .badgeList {
   display: flex;
   flex-direction: row;
