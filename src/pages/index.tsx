@@ -49,7 +49,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Tüm hakları saklıdır. Nitoji &copy; 2022-2023.
+        Tüm hakları saklıdır. Nitoji v3.0 &copy; 2022-2023.
         <a href="https://www.gokaygultekin.dev">GG</a>
       </footer>
     </>
