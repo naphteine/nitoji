@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }
 
 .logo {
@@ -16,7 +17,15 @@
   text-decoration: dotted underline;
 }
 
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #00000011;
   border-radius: 10px;
   text-decoration: none;
@@ -31,4 +40,8 @@
   background: #fff;
   color: black;
   border: 1px solid #00000055;
+}
+
+.icon {
+  margin: 5px;
 }
