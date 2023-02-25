@@ -1,0 +1,87 @@
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  font-family: "Potta One", cursive;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #222;
+}
+
+.logo:hover {
+  color: #000;
+  text-decoration: dotted underline;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 2rem;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.main {
+  margin: 2rem;
+}
+
+.captionList {
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.captionItem {
+  background-color: whitesmoke;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  padding: 1rem;
+  filter: none;
+}
+
+.captionItem:hover {
+  filter: invert(0.9);
+}
+
+.captionItem header {
+  font-size: 2rem;
+  font-weight: 800;
+  color: black;
+  border-bottom: 1px solid gray;
+}
+
+.badgeList {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+
+@media (max-width: 200px) {
+  .badgeList {
+    flex-direction: column;
+  }
+
+  .badge {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.badge {
+  margin-right: 0.5rem;
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 0 1rem;
+}
