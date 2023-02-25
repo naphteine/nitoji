@@ -30,17 +30,17 @@ const Header = () => {
           <>
             <Link href="/profil" className={styles.link}>
               Profil
-              <RiAccountPinCircleFill size={16} style={{ margin: 5 }} />
+              <RiAccountPinCircleFill size={16} className={styles.icon} />
             </Link>
 
             <Link href="/dict" className={styles.link}>
               Başlık aç
-              <BiMessageSquareAdd size={16} style={{ margin: 5 }} />
+              <BiMessageSquareAdd size={16} className={styles.icon} />
             </Link>
 
-            <Link href="/l" className={styles.link}>
+            <Link href="/" className={styles.link}>
               Çıkış
-              <HiLogout size={16} style={{ margin: 5 }} />
+              <HiLogout size={16} className={styles.icon} />
             </Link>
           </>
         )}
