@@ -39,7 +39,6 @@ export default function Home() {
               <span className={styles.badge}>常用</span>
             </div>
             <b>Türkçe okunuş:</b> Kanji
-            <h3>Çeviriler</h3>
             <ol>
               <li>Çin karakterleri</li>
               <li>Han Hanedanlığı yazım sistemi</li>
@@ -58,11 +57,36 @@ export default function Home() {
                 <span className={styles.badge}>常用</span>
                 <span className={styles.badge}>grade 3</span>
               </div>
-              <b>On okunuşu:</b> <span title="kan">カン</span>
-              <h3>Çeviriler</h3>
+              <b>On:</b> <span title="kan">カン</span>
               <ol>
                 <li>Çin</li>
                 <li>Han Hanedanlığı (M.Ö. 202 - M.S. 220)</li>
+              </ol>
+            </div>
+          </article>
+
+          <article className={styles.kanjiItem}>
+            <header>
+              <ruby>
+                日<rt>にち</rt>
+              </ruby>
+            </header>
+            <div>
+              <div className={styles.badgeList}>
+                <span className={styles.badge}>jlpt n5</span>
+                <span className={styles.badge}>常用</span>
+                <span className={styles.badge}>grade 1</span>
+              </div>
+              <b>Kun</b>: <span title="hi">ひ</span>、{" "}
+              <span title="-bi">-び</span>、 <span title="-ka">-か</span>
+              <br />
+              <b>On:</b> <span title="nichi">ニチ</span>、{" "}
+              <span title="jitsu">ジツ</span>
+              <ol>
+                <li>Pazar günü</li>
+                <li>Japonya</li>
+                <li>Gün sayacı</li>
+                <li>Ayın n&apos;inci günü</li>
               </ol>
             </div>
           </article>
