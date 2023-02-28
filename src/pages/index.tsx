@@ -112,6 +112,8 @@ export default function Home() {
                     </span>
                   )}
 
+                  {dict.kun && dict.on && <br />}
+
                   {dict.on && (
                     <span>
                       <b>On: </b>
