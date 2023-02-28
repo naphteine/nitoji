@@ -3,11 +3,33 @@ import { Inter } from "next/font/google";
 
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import { SetStateAction, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const dictData = [
+  const [search, setSearch] = useState("");
+
+  const searchChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearch(event.target.value);
+  };
+
+  useEffect(() => {
+    // Search
+    if (search.length <= 0) {
+      setDictData(initDictData);
+    } else {
+      setDictData(
+        initDictData.filter((x) => {
+          return x.tr.toString().toLowerCase().includes(search);
+        })
+      );
+    }
+  }, [search]);
+
+  const initDictData = [
     {
       id: 0,
       kanji: true,
@@ -60,6 +82,8 @@ export default function Home() {
     },
   ];
 
+  const [dictData, setDictData] = useState(initDictData);
+
   return (
     <>
       <Head>
@@ -75,6 +99,11 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
+        <div className={styles.search}>
+          <input placeholder="Ara" value={search} onChange={searchChange} />
+          <button>Ara</button>
+        </div>
+
         <div className={styles.captionList}>
           {dictData.map((dict) => {
             return (
