@@ -80,6 +80,52 @@ export default function Home() {
       tags: ["jlpt n5", "isim", "常用"],
       tr: ["Çin karakterleri", "Han Hanedanlığı yazım sistemi"],
     },
+    {
+      id: 3,
+      kanji: false,
+      ruby: [
+        {
+          id: 0,
+          body: "明",
+          text: "あ",
+        },
+        {
+          id: 1,
+          body: "日",
+          text: "した",
+        },
+      ],
+      reading: "Ashita",
+      tags: ["jlpt n5", "isim", "常用"],
+      tr: ["Yarın"],
+    },
+    {
+      id: 4,
+      kanji: true,
+      ruby: [
+        {
+          id: 0,
+          body: "明",
+          text: "めい",
+        },
+      ],
+      reading: "Mei",
+      tags: ["kanji", "jlpt n4", "常用"],
+      tr: ["Aydınlık", "ışık"],
+      kun: [
+        "あ.かり",
+        " あか.るい",
+        " あか.るむ",
+        " あか.らむ",
+        " あき.らか",
+        " あ.ける",
+        " -あ.け",
+        " あ.く",
+        " あ.くる",
+        " あ.かす",
+      ],
+      on: ["メイ", "ミョウ", "ミン"],
+    },
   ];
 
   const [dictData, setDictData] = useState(initDictData);
