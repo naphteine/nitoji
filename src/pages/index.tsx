@@ -3,32 +3,9 @@ import { Inter } from "next/font/google";
 
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
-import { SetStateAction, useEffect, useState } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useState } from "react";
 
 export default function Home() {
-  const [search, setSearch] = useState("");
-
-  const searchChange = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setSearch(event.target.value);
-  };
-
-  useEffect(() => {
-    // Search
-    if (search.length <= 0) {
-      setDictData(initDictData);
-    } else {
-      setDictData(
-        initDictData.filter((x) => {
-          return x.tr.toString().toLowerCase().includes(search);
-        })
-      );
-    }
-  }, [search]);
-
   const initDictData = [
     {
       id: 0,
@@ -37,7 +14,6 @@ export default function Home() {
         {
           id: 0,
           body: "日",
-          text: "にち",
         },
       ],
       reading: "nichi",
@@ -49,14 +25,7 @@ export default function Home() {
     {
       id: 1,
       kanji: true,
-      ruby: [
-        {
-          id: 0,
-          body: "漢",
-          text: "かん",
-        },
-      ],
-      reading: "kan",
+      ruby: [{ body: "漢" }],
       tags: ["jlpt n4", "常用", "grade 3"],
       on: ["カン"],
       tr: ["Çin", "Han Hanedanlığı (M.Ö. 202 - M.S. 220)"],
@@ -102,14 +71,7 @@ export default function Home() {
     {
       id: 4,
       kanji: true,
-      ruby: [
-        {
-          id: 0,
-          body: "明",
-          text: "めい",
-        },
-      ],
-      reading: "Mei",
+      ruby: [{ body: "明" }],
       tags: ["kanji", "jlpt n4", "常用"],
       tr: ["Aydınlık", "ışık"],
       kun: [
@@ -144,71 +106,7 @@ export default function Home() {
         </Link>
       </header>
 
-      <main className={styles.main}>
-        <div className={styles.search}>
-          <input placeholder="Ara" value={search} onChange={searchChange} />
-          <button>Ara</button>
-        </div>
-
-        <div className={styles.captionList}>
-          {dictData.map((dict) => {
-            return (
-              <article
-                key={dict.id}
-                className={dict.kanji ? styles.kanjiItem : styles.captionItem}
-              >
-                <header title={dict.reading}>
-                  {dict.ruby.map((ruby) => {
-                    return (
-                      <ruby key={ruby.id}>
-                        {ruby.body}
-
-                        <rt>{ruby.text}</rt>
-                      </ruby>
-                    );
-                  })}
-                </header>
-                <div>
-                  <div className={styles.badgeList}>
-                    {dict.tags.map((tag) => {
-                      return (
-                        <span key={tag} className={styles.badge}>
-                          {tag}
-                        </span>
-                      );
-                    })}
-                  </div>
-                  {dict.kun && (
-                    <span>
-                      <b>Kun: </b>
-                      {dict.kun.map((kuns) => {
-                        return <span key={kuns}>{kuns} </span>;
-                      })}
-                    </span>
-                  )}
-
-                  {dict.kun && dict.on && <br />}
-
-                  {dict.on && (
-                    <span>
-                      <b>On: </b>
-                      {dict.on.map((ons) => {
-                        return <span key={ons}>{ons} </span>;
-                      })}
-                    </span>
-                  )}
-
-                  <ol>
-                    {dict.tr.map((translation) => {
-                      return <li key={translation}>{translation}</li>;
-                    })}
-                  </ol>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </main>
+      <main className={styles.main}></main>
 
       <footer className={styles.footer}>
         Tüm hakları saklıdır. Nitoji &copy; 2022-2023.
