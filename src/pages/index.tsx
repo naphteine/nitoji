@@ -6,15 +6,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [userData, setUserData] = useState<ListResult>();
+  const [dictData, setDictData] = useState<ListResult>();
 
   async function getAll() {
     const pb = new PocketBase("http://127.0.0.1:8090");
     const resultList = await pb.collection("dict").getList(1, 50, {
+      expand: "user",
       filter: "",
     });
 
-    setUserData(resultList);
+    setDictData(resultList);
   }
 
   useEffect(() => {
@@ -36,11 +37,12 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        {userData &&
-          userData.items &&
-          userData.items.map((e) => (
+        {dictData &&
+          dictData.items &&
+          dictData.items.map((e) => (
             <div key={e.id}>
-              {e.japanese} ({e.jlpt}) - {e.turkish}
+              {e.japanese} ({e.jlpt}) {e.expand.user.username}
+              <ol></ol>
             </div>
           ))}
       </main>
