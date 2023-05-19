@@ -4,6 +4,7 @@ import PocketBase, { BaseModel, ListResult, Record } from "pocketbase";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import DictEntry from "@/components/DictEntry";
 
 export default function Home() {
   const [dictData, setDictData] = useState<ListResult>();
@@ -37,14 +38,9 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        {dictData &&
-          dictData.items &&
-          dictData.items.map((e) => (
-            <div key={e.id}>
-              {e.japanese} ({e.jlpt}) {e.expand.user.username}
-              <ol></ol>
-            </div>
-          ))}
+        {dictData?.items?.map((e) => (
+          <DictEntry key={e.id} data={e} />
+        ))}
       </main>
 
       <footer className={styles.footer}>
