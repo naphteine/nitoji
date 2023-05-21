@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  font-family: "Potta One", cursive;
+  font-size: 3rem;
+  text-decoration: none;
+  color: #222;
+}
+
+.logo:hover {
+  color: #000;
+  text-decoration: dotted underline;
+}
