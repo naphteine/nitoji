@@ -1,38 +1,50 @@
-import PocketBase from "pocketbase";
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import pb from "lib/pocketbase";
 
 export default function Login() {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
 
-  const pb = new PocketBase("http://127.0.0.1:8090");
-
   const { push } = useRouter();
 
   async function Login(email: string, password: string) {
-    const authData = await pb
-      .collection("users")
-      .authWithPassword(email, password);
+    try {
+      const authData = await pb
+        .collection("users")
+        .authWithPassword(email, password);
+      if (authData) {
+        console.log(authData);
+        push("/");
+      } else {
+        // Giriş başarısız durumunda hata işlemleri
+      }
+    } catch (error) {
+      // Hata işlemleri
+    }
   }
 
-  function submit(e: any) {
+  function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log("Logging in...");
     Login(inputEmail, inputPassword);
-    push("/");
   }
 
-  function emailChange(e: any) {
+  function emailChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInputEmail(e.target.value);
   }
 
-  function passwdChange(e: any) {
+  function passwdChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInputPassword(e.target.value);
   }
+
+  useEffect(() => {
+    if (pb.authStore.isValid === true) {
+      push("/");
+    }
+  }, [pb.authStore.isValid]);
 
   return (
     <>

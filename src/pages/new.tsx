@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
-import PocketBase from "pocketbase";
 import { useEffect, useState } from "react";
+import pb from "lib/pocketbase";
 
 export default function New() {
   const [yeniBaslik, setYeniBaslik] = useState("");
   const [yeniGirdi, setYeniGirdi] = useState("");
 
   const { push } = useRouter();
-  const pb = new PocketBase("http://127.0.0.1:8090");
 
   useEffect(() => {
     if (!pb.authStore.isValid) {
@@ -40,6 +39,7 @@ export default function New() {
       content: yeniGirdi,
       dict: record.id,
       user: pb.authStore.model?.id,
+      star: true,
     };
 
     const entryRecord = await pb.collection("dictEntries").create(entryData);
