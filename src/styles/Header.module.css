@@ -4,10 +4,19 @@
   flex-direction: column;
 }
 
+.header > .nav > a {
+  color: white;
+}
+
 .nav {
   display: flex;
   background-color: #222;
   color: whitesmoke;
+}
+
+.nav > button {
+  background-color: lightcoral;
+  height: 20%;
 }
 
 .logo {

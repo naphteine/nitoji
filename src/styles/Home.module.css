@@ -1,1 +1,22 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333333;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  width: 50%;
+}
+
+.search > input {
+  width: 100%;
+  padding: 0.3rem 0.6rem;
+  border-radius: 30px;
+}

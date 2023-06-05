@@ -24,12 +24,14 @@ export default function Footer() {
 
   return (
     <>
-      <p>
-        Sistemde toplam {toplamBaslik} başlık - {toplamGirdi} girdi var.
-      </p>
       <footer className={styles.footer}>
-        <p>Tüm hakları saklıdır. Nitoji &copy; 2022-2023.</p>
-        <a href="https://www.gokaygultekin.dev">GG</a>
+        <p>
+          Sistemde toplam {toplamBaslik} başlık - {toplamGirdi} girdi var.
+        </p>
+        <div className={styles.two_sides}>
+          <p>Tüm hakları saklıdır. Nitoji &copy; 2022-2023.</p>
+          <a href="https://www.gokaygultekin.dev">GG</a>
+        </div>
       </footer>
     </>
   );
