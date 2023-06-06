@@ -34,36 +34,41 @@ export default function New() {
     console.log(yeniBaslik, yeniGirdi);
 
     // başlık verisi
-    const data = {
-      japanese: yeniBaslik,
-      user: pb.authStore.model?.id,
-    };
-
-    const record = await pb.collection("dict").create(data);
-
-    // girdi verisi
-    const entryData = {
-      content: yeniGirdi,
-      dict: record.id,
-      user: pb.authStore.model?.id,
-      star: true,
-    };
-
-    const entryRecord = await pb.collection("dictEntries").create(entryData);
-
-    // seviye
-    if (yeniSeviye !== null && yeniSeviye !== "") {
-      const level = await pb
-        .collection("tags")
-        .getFirstListItem(`name="${yeniSeviye}"`);
-
-      const levelData = {
-        word: record.id,
-        tag: level.id,
+    try {
+      const data = {
+        japanese: yeniBaslik,
         user: pb.authStore.model?.id,
       };
 
-      const levelRecord = await pb.collection("dictTags").create(levelData);
+      const record = await pb.collection("dict").create(data);
+
+      // girdi verisi
+      const entryData = {
+        content: yeniGirdi,
+        dict: record.id,
+        user: pb.authStore.model?.id,
+        star: true,
+      };
+
+      const entryRecord = await pb.collection("dictEntries").create(entryData);
+
+      // seviye
+      if (yeniSeviye !== null && yeniSeviye !== "") {
+        const level = await pb
+          .collection("tags")
+          .getFirstListItem(`name="${yeniSeviye}"`);
+
+        const levelData = {
+          word: record.id,
+          tag: level.id,
+          user: pb.authStore.model?.id,
+        };
+
+        const levelRecord = await pb.collection("dictTags").create(levelData);
+      }
+    } catch (error) {
+      alert("Hata yaşandı!");
+      console.log(error);
     }
   }
 
