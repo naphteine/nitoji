@@ -15,7 +15,7 @@ export default function Word() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   async function getAll() {
-    const getWord = await pb.collection("dict").getList(1, 50, {
+    const getWord = await pb.collection("nitoji_dict").getList(1, 50, {
       expand: "user",
       filter: `japanese="${router.query.word}"`,
       $autoCancel: false,
@@ -23,12 +23,14 @@ export default function Word() {
 
     setWord(getWord);
 
-    const getEntries = await pb.collection("dictEntries").getList(1, 50, {
-      expand: "user",
-      filter: `dict.japanese="${router.query.word}"`,
-      sort: "created",
-      $autoCancel: false,
-    });
+    const getEntries = await pb
+      .collection("nitoji_dictEntries")
+      .getList(1, 50, {
+        expand: "user",
+        filter: `dict.japanese="${router.query.word}"`,
+        sort: "created",
+        $autoCancel: false,
+      });
 
     setMyEntries(getEntries);
 
@@ -51,7 +53,9 @@ export default function Word() {
       user: pb.authStore.model?.id,
     };
 
-    const entryRecord = await pb.collection("dictEntries").create(entryData);
+    const entryRecord = await pb
+      .collection("nitoji_dictEntries")
+      .create(entryData);
 
     console.log(entryRecord);
     setEntryValue("");

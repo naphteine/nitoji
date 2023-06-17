@@ -40,7 +40,7 @@ export default function New() {
         user: pb.authStore.model?.id,
       };
 
-      const record = await pb.collection("dict").create(data);
+      const record = await pb.collection("nitoji_dict").create(data);
 
       // girdi verisi
       const entryData = {
@@ -50,12 +50,14 @@ export default function New() {
         star: true,
       };
 
-      const entryRecord = await pb.collection("dictEntries").create(entryData);
+      const entryRecord = await pb
+        .collection("nitoji_dictEntries")
+        .create(entryData);
 
       // seviye
       if (yeniSeviye !== null && yeniSeviye !== "") {
         const level = await pb
-          .collection("tags")
+          .collection("nitoji_tags")
           .getFirstListItem(`name="${yeniSeviye}"`);
 
         const levelData = {
@@ -64,7 +66,9 @@ export default function New() {
           user: pb.authStore.model?.id,
         };
 
-        const levelRecord = await pb.collection("dictTags").create(levelData);
+        const levelRecord = await pb
+          .collection("nitoji_dictTags")
+          .create(levelData);
       }
     } catch (error) {
       alert("Hata yaşandı!");

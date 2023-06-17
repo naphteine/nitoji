@@ -8,10 +8,10 @@ export default function Footer() {
 
   async function getToplams() {
     const { totalItems: baslik } = await pb
-      .collection("dict")
+      .collection("nitoji_dict")
       .getList(1, 1, { $autoCancel: false });
     const { totalItems: girdi } = await pb
-      .collection("dictEntries")
+      .collection("nitoji_dictEntries")
       .getList(1, 1, { $autoCancel: false });
 
     setToplamBaslik(baslik);

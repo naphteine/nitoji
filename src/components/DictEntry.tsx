@@ -9,15 +9,17 @@ export default function DictEntry(dict: any) {
   const [levelData, setLevelData] = useState<ListResult>();
 
   async function getAll() {
-    const resultList = await pb.collection("dictEntries").getList(1, 50, {
-      expand: "user",
-      filter: `dict.id="${dict.data.id}" && star=true`,
-      $autoCancel: false,
-    });
+    const resultList = await pb
+      .collection("nitoji_dictEntries")
+      .getList(1, 50, {
+        expand: "user",
+        filter: `dict.id="${dict.data.id}" && star=true`,
+        $autoCancel: false,
+      });
 
     setEntryData(resultList);
 
-    const levelList = await pb.collection("dictTags").getList(1, 50, {
+    const levelList = await pb.collection("nitoji_dictTags").getList(1, 50, {
       expand: "tag",
       filter: `word.id="${dict.data.id}"`,
       $autoCancel: false,

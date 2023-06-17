@@ -15,7 +15,7 @@ export default function Home() {
   const [dictData, setDictData] = useState<ListResult>();
   const [reverseDictData, setReverseDictData] = useState<ListResult>();
   async function getAll() {
-    const resultList = await pb.collection("dict").getList(1, 50, {
+    const resultList = await pb.collection("nitoji_dict").getList(1, 50, {
       expand: "user",
       filter: "",
       $autoCancel: false,
@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   async function makeSearch(term: any) {
-    const resultList = await pb.collection("dict").getList(1, 25, {
+    const resultList = await pb.collection("nitoji_dict").getList(1, 25, {
       expand: "user",
       filter: `japanese~"${term}"`,
       $autoCancel: false,
@@ -34,12 +34,14 @@ export default function Home() {
 
     setDictData(resultList);
 
-    const reverseList = await pb.collection("dictEntries").getList(1, 50, {
-      filter: `content~"${term}" && star=true`,
-      expand: "dict, user",
-      $autoCancel: false,
-      sort: "-created",
-    });
+    const reverseList = await pb
+      .collection("nitoji_dictEntries")
+      .getList(1, 50, {
+        filter: `content~"${term}" && star=true`,
+        expand: "dict, user",
+        $autoCancel: false,
+        sort: "-created",
+      });
 
     setReverseDictData(reverseList);
     console.log(reverseList);

@@ -13,7 +13,7 @@ export default function Login() {
   async function Login(email: string, password: string) {
     try {
       const authData = await pb
-        .collection("users")
+        .collection("nitoji_users")
         .authWithPassword(email, password);
       if (authData) {
         console.log(authData);
