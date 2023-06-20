@@ -93,12 +93,11 @@ export default function Home() {
             <button type="submit">Ara</button>
           </form>
         </div>
-        <h2>Son eklenenler</h2>
+        {arama ? <h2>Arama</h2> : <h2>Son eklenenler</h2>}
         {dictData?.items?.map((e) => (
           <DictEntry key={e.id} data={e} />
         ))}
 
-        {arama && <h2>Türkçe arama</h2>}
         {arama &&
           reverseDictData?.items?.map((e) => (
             <li key={e.id}>
