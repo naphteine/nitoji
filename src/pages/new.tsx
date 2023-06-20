@@ -87,17 +87,21 @@ export default function New() {
           type="text"
           name="caption"
           id="caption"
+          autoComplete="off"
           onChange={baslikDegisti}
           required
         />
+        <br />
         <label htmlFor="entry">İlk girdi</label>
         <input
           type="text"
           name="entry"
           id="entry"
+          autoComplete="off"
           onChange={girdiDegisti}
           required
         />
+        <br />
         <label htmlFor="level">JLPT</label>
         <select name="level" id="level" onChange={seviyeDegisti}>
           <option value="">Yok</option>
@@ -107,6 +111,7 @@ export default function New() {
           <option value="n2">n2</option>
           <option value="n1">n1</option>
         </select>
+        <br />
         <button type="submit">Gönder</button>
       </form>
 
