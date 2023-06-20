@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import pb from "lib/pocketbase";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import styles from "@/styles/New.module.css";
 
 export default function New() {
   const [yeniBaslik, setYeniBaslik] = useState("");
@@ -79,41 +80,44 @@ export default function New() {
   return (
     <>
       <Header />
-      <h1>Yeni Başlık Ekranı</h1>
 
-      <form onSubmit={submitted}>
-        <label htmlFor="caption">Başlık</label>
-        <input
-          type="text"
-          name="caption"
-          id="caption"
-          autoComplete="off"
-          onChange={baslikDegisti}
-          required
-        />
-        <br />
-        <label htmlFor="entry">İlk girdi</label>
-        <input
-          type="text"
-          name="entry"
-          id="entry"
-          autoComplete="off"
-          onChange={girdiDegisti}
-          required
-        />
-        <br />
-        <label htmlFor="level">JLPT</label>
-        <select name="level" id="level" onChange={seviyeDegisti}>
-          <option value="">Yok</option>
-          <option value="n5">n5</option>
-          <option value="n4">n4</option>
-          <option value="n3">n3</option>
-          <option value="n2">n2</option>
-          <option value="n1">n1</option>
-        </select>
-        <br />
-        <button type="submit">Gönder</button>
-      </form>
+      <main className={styles.new}>
+        <h1>Yeni Kelime</h1>
+
+        <form className={styles.new_form} onSubmit={submitted}>
+          <label htmlFor="caption">Başlık</label>
+          <input
+            type="text"
+            name="caption"
+            id="caption"
+            autoComplete="off"
+            onChange={baslikDegisti}
+            required
+          />
+          <br />
+          <label htmlFor="entry">İlk girdi</label>
+          <input
+            type="text"
+            name="entry"
+            id="entry"
+            autoComplete="off"
+            onChange={girdiDegisti}
+            required
+          />
+          <br />
+          <label htmlFor="level">JLPT</label>
+          <select name="level" id="level" onChange={seviyeDegisti}>
+            <option value="">Yok</option>
+            <option value="n5">n5</option>
+            <option value="n4">n4</option>
+            <option value="n3">n3</option>
+            <option value="n2">n2</option>
+            <option value="n1">n1</option>
+          </select>
+          <br />
+          <button type="submit">Gönder</button>
+        </form>
+      </main>
 
       <Footer />
     </>
