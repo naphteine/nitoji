@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import pb from "lib/pocketbase";
 import styles from "@/styles/Word.module.css";
 import RelativeTime from "@/components/RelativeTime";
+import Link from "next/link";
 
 export default function Word() {
   const router = useRouter();
@@ -97,7 +98,9 @@ export default function Word() {
             <br />
             <div className={styles.entry_details}>
               <div className={styles.entry_author}>
-                {e.expand.user.username}
+                <Link href={`/yazar/${e.expand.user.username}`}>
+                  {e.expand.user.username}
+                </Link>
               </div>
               <RelativeTime timestamp={e.created} />
             </div>
