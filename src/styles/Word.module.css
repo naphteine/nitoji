@@ -1,0 +1,31 @@
+.caption {
+  text-align: center;
+  color: #333;
+  font-weight: 600;
+  font-size: 2rem;
+  border-bottom: 1px solid #333;
+  padding: 1rem;
+  margin: 0 4rem;
+}
+
+.entry_list {
+  margin: 0 4rem;
+}
+
+.entry {
+  background-color: #3333331f;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0 2rem;
+}
+
+.entry_details {
+  font-weight: 100;
+  text-align: right;
+}
+
+.entry_author {
+}
+
+.entry_date {
+}

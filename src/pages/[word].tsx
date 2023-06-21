@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { ListResult, Record } from "pocketbase";
 import { useEffect, useState } from "react";
 import pb from "lib/pocketbase";
+import styles from "@/styles/Word.module.css";
+import RelativeTime from "@/components/RelativeTime";
 
 export default function Word() {
   const router = useRouter();
@@ -75,8 +77,9 @@ export default function Word() {
   return (
     <>
       <Header />
-      Dict: {router.query.word}
-      <hr />
+
+      <div className={styles.caption}>{router.query.word}</div>
+
       {isLoggedIn && (
         <>
           <h4>Yeni entry</h4>
@@ -86,17 +89,21 @@ export default function Word() {
           </form>
         </>
       )}
-      <h4>Entries</h4>
-      <div>
-        <ol>
-          {myEntries?.items.map((e) => (
-            <li key={e.id}>
-              {e.content} - {e.expand.user.username} {e.star && "*yıldızlı*"}{" "}
-              <em>{e.created}</em>
-            </li>
-          ))}
-        </ol>
-      </div>
+
+      <ol className={styles.entry_list}>
+        {myEntries?.items.map((e) => (
+          <li key={e.id} className={styles.entry}>
+            {e.content}
+            <br />
+            <div className={styles.entry_details}>
+              <div className={styles.entry_author}>
+                {e.expand.user.username}
+              </div>
+              <RelativeTime timestamp={e.created} />
+            </div>
+          </li>
+        ))}
+      </ol>
       <Footer />
     </>
   );
