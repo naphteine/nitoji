@@ -7,6 +7,7 @@ import pb from "lib/pocketbase";
 import styles from "@/styles/Word.module.css";
 import RelativeTime from "@/components/RelativeTime";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Word() {
   const router = useRouter();
@@ -77,6 +78,13 @@ export default function Word() {
 
   return (
     <>
+      <Head>
+        <title>{`${router.query.word} - Nitoji`}</title>
+        <meta name="description" content="Türkçe Japonca Sözlük Uygulaması" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Header />
 
       <div className={styles.caption}>{router.query.word}</div>
