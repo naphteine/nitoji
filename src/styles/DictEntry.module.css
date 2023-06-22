@@ -1,5 +1,15 @@
 .entry {
   width: 70%;
-  background-color: #ffffff1f;
+  background-color: var(--color-pop);
+  border-radius: 10px;
+  padding: 0.5rem;
   margin-bottom: 1rem;
+}
+
+.entry_header {
+  color: var(--color-text);
+  text-decoration: none;
+  font-family: "Noto Serif JP", serif;
+  font-size: 2rem;
+  font-weight: 400;
 }

@@ -13,7 +13,7 @@
 }
 
 .entry {
-  background-color: #3333331f;
+  background-color: var(--color-pop);
   padding: 1rem;
   border-radius: 10px;
   margin: 0 auto;

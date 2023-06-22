@@ -1,10 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Kosugi&family=Noto+Serif+Khojki:wght@400;700&family=Open+Sans:wght@300;400;700&family=Potta+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;900&family=Open+Sans&family=Potta+One&display=swap");
+
+:root {
+  --color-background: #f8f9fa;
+  --color-primary: #007bff;
+  --color-secondary: #343a40;
+  --color-warning: #ffc107;
+  --color-text: #212529;
+  --color-pop: #ececf8;
+}
 
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 code {

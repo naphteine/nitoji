@@ -36,7 +36,9 @@ export default function DictEntry(dict: any) {
 
   return (
     <div className={styles.entry}>
-      <Link href={`/${dict.data.japanese}`}>{dict.data.japanese}</Link>{" "}
+      <Link className={styles.entry_header} href={`/${dict.data.japanese}`}>
+        {dict.data.japanese}
+      </Link>{" "}
       {levelData?.items?.map((e) => (
         <span key={e.id}>{e.expand.tag[0].name}</span>
       ))}
