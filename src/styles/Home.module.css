@@ -21,9 +21,17 @@
   border-radius: 30px;
 }
 
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-top: 1px solid #aaa;
+}
+
 .hero_image {
   position: relative;
-  width: 50vw;
+  width: 0vw;
   height: 50vh;
   min-width: 300px;
 }

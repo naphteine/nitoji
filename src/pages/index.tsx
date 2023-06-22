@@ -106,6 +106,13 @@ export default function Home() {
           ))}
       </main>
 
+      <div className={styles.hero}>
+        Album of Ten Leaves, 1656 Xiang Shengmo
+        <div className={styles.hero_image}>
+          <Image src="/cherry/45408.jpg" fill alt="Cherry blossoms" />
+        </div>
+      </div>
+
       <Footer />
     </>
   );
