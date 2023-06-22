@@ -24,16 +24,22 @@
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 1rem;
+  justify-content: space-evenly;
+  padding-top: 2rem;
   border-top: 1px solid #aaa;
+}
+
+@media (max-width: 500px) {
+  .hero {
+    flex-direction: column;
+  }
 }
 
 .hero_image {
   position: relative;
-  width: 0vw;
+  width: auto;
   height: 50vh;
-  min-width: 300px;
+  min-width: 245px;
 }
 
 .hero_image img {
