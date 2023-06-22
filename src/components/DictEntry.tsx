@@ -40,7 +40,13 @@ export default function DictEntry(dict: any) {
         {dict.data.japanese}
       </Link>{" "}
       {levelData?.items?.map((e) => (
-        <span key={e.id}>{e.expand.tag[0].name}</span>
+        <Link
+          className={styles.tag}
+          href={`/tag/${e.expand.tag[0].name}`}
+          key={e.id}
+        >
+          {e.expand.tag[0].name}
+        </Link>
       ))}
       <ol>
         {entryData?.items?.map((e) => (
