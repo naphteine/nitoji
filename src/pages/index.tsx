@@ -8,6 +8,7 @@ import DictEntry from "@/components/DictEntry";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import pb from "lib/pocketbase";
+import Image from "next/image";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -93,6 +94,7 @@ export default function Home() {
             <button type="submit">Ara</button>
           </form>
         </div>
+
         {arama ? <h2>Arama</h2> : <h2>Son eklenenler</h2>}
         {dictData?.items?.map((e) => (
           <DictEntry key={e.id} data={e} />
@@ -100,9 +102,7 @@ export default function Home() {
 
         {arama &&
           reverseDictData?.items?.map((e) => (
-            <li key={e.id}>
-              {e.content} - {e.expand?.dict.japanese}
-            </li>
+            <DictEntry key={e.id} data={e.expand?.dict} />
           ))}
       </main>
 

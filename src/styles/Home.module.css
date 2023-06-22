@@ -20,3 +20,14 @@
   padding: 0.3rem 0.6rem;
   border-radius: 30px;
 }
+
+.hero_image {
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  min-width: 300px;
+}
+
+.hero_image img {
+  object-fit: contain;
+}
