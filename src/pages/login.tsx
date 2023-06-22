@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import pb from "lib/pocketbase";
+import styles from "@/styles/Login.module.css";
 
 export default function Login() {
   const [inputEmail, setInputEmail] = useState("");
@@ -51,7 +52,7 @@ export default function Login() {
       <Header />
 
       <main>
-        <form onSubmit={submit}>
+        <form className={styles.form} onSubmit={submit}>
           <input
             onChange={emailChange}
             type="email"

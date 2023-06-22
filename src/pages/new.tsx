@@ -85,7 +85,7 @@ export default function New() {
         <h1>Yeni Kelime</h1>
 
         <form className={styles.new_form} onSubmit={submitted}>
-          <label htmlFor="caption">Başlık</label>
+          <label htmlFor="caption">Japonca (Başlık)</label>
           <input
             type="text"
             name="caption"
@@ -95,7 +95,7 @@ export default function New() {
             required
           />
           <br />
-          <label htmlFor="entry">İlk girdi</label>
+          <label htmlFor="entry">Türkçe (İlk girdi)</label>
           <input
             type="text"
             name="entry"
