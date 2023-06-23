@@ -9,6 +9,7 @@ export default function New() {
   const [yeniBaslik, setYeniBaslik] = useState("");
   const [yeniGirdi, setYeniGirdi] = useState("");
   const [yeniSeviye, setYeniSeviye] = useState("");
+  const [yeniType, setYeniType] = useState("");
 
   const { push } = useRouter();
 
@@ -28,6 +29,10 @@ export default function New() {
 
   const seviyeDegisti = (e: any) => {
     setYeniSeviye(e.target.value);
+  };
+
+  const typeDegisti = (e: any) => {
+    setYeniType(e.target.value);
   };
 
   async function submitted(e: any) {
@@ -71,6 +76,23 @@ export default function New() {
           .collection("nitoji_dictTags")
           .create(levelData);
       }
+
+      // type
+      if (yeniType !== null && yeniType !== "") {
+        const type = await pb
+          .collection("nitoji_tags")
+          .getFirstListItem(`name="${yeniType}"`);
+
+        const typeData = {
+          word: record.id,
+          tag: type.id,
+          user: pb.authStore.model?.id,
+        };
+
+        const typeRecord = await pb
+          .collection("nitoji_dictTags")
+          .create(typeData);
+      }
     } catch (error) {
       alert("Hata yaşandı!");
       console.log(error);
@@ -113,6 +135,16 @@ export default function New() {
             <option value="n3">n3</option>
             <option value="n2">n2</option>
             <option value="n1">n1</option>
+          </select>
+          <br />
+          <label htmlFor="type">Tür</label>
+          <select name="type" id="type" onChange={typeDegisti}>
+            <option value="">Yok</option>
+            <option value="五段動詞">五段動詞</option>
+            <option value="一段動詞">一段動詞</option>
+            <option value="漢字">漢字</option>
+            <option value="単語">単語</option>
+            <option value="ことわざ">ことわざ</option>
           </select>
           <br />
           <button type="submit">Gönder</button>
