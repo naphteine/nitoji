@@ -37,9 +37,11 @@ export default function Header() {
         )}
       </nav>
 
-      <Link href="/" className={styles.logo}>
-        日土辞書
-      </Link>
+      <div className={styles.logo}>
+        <Link href="/" className={styles.logo_link}>
+          日土辞書
+        </Link>
+      </div>
     </header>
   );
 }

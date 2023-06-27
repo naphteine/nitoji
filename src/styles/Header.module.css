@@ -22,13 +22,16 @@
 .logo {
   display: flex;
   justify-content: center;
+}
+
+.logo_link {
   font-family: "Potta One", cursive;
   font-size: 3rem;
   text-decoration: none;
   color: #222;
 }
 
-.logo:hover {
+.logo_link:hover {
   color: #000;
   text-decoration: dotted underline;
 }
