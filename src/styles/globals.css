@@ -9,12 +9,18 @@
   --color-pop: #ececf8;
 }
 
+html {
+  background-color: white;
+}
+
 body {
-  margin: 0;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: var(--color-background);
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background);
   color: var(--color-text);
 }
 

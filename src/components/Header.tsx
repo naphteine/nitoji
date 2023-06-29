@@ -3,6 +3,14 @@ import styles from "../styles/Header.module.css";
 import pb from "lib/pocketbase";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import {
+  RiAccountBoxFill,
+  RiChatNewFill,
+  RiLoginBoxFill,
+  RiLogoutBoxFill,
+  RiLogoutCircleFill,
+  RiNewspaperFill,
+} from "react-icons/ri";
 
 export default function Header() {
   const router = useRouter();
@@ -23,24 +31,34 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
-        {isLoggedIn ? (
-          <>
-            <p>Üye: {username}</p>
-            <button onClick={logout}>Çıkış</button>
-            <Link href="/new">Yeni</Link>
-          </>
-        ) : (
-          <>
-            <Link href="/login">Giriş yap</Link>
-          </>
-        )}
-      </nav>
-
       <div className={styles.logo}>
+        <RiNewspaperFill size={24} title="Japon Çukuru" />
+
         <Link href="/" className={styles.logo_link}>
           日土辞書
         </Link>
+
+        <div className={styles.buttons}>
+          {isLoggedIn ? (
+            <>
+              <RiAccountBoxFill size={24} title={username} />
+              <RiLogoutCircleFill
+                size={24}
+                onClick={logout}
+                title="Çıkış yap"
+              />{" "}
+              <Link href="/new">
+                <RiChatNewFill size={24} title="Yeni başlık" />
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <RiLoginBoxFill size={24} />
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );

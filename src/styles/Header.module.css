@@ -5,23 +5,23 @@
 }
 
 .header > .nav > a {
-  color: white;
 }
 
 .nav {
   display: flex;
-  background-color: #222;
-  color: whitesmoke;
+  color: #222;
 }
 
 .nav > button {
+  border: none;
+  cursor: pointer;
   background-color: lightcoral;
   height: 20%;
 }
 
 .logo {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .logo_link {
