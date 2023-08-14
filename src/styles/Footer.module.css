@@ -14,8 +14,26 @@
   justify-content: space-between;
 }
 
+.gg {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  line-height: 28.8px;
+  text-underline-offset: 0.25ch;
+  text-decoration-thickness: 1px;
+  color: var(--color-text);
+}
+
+.gg:hover {
+  text-decoration: underline dashed;
+}
+
 @media (max-width: 600px) {
   .footer {
+    align-items: center;
+  }
+
+  .two_sides {
     flex-direction: column;
     align-items: center;
   }

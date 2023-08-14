@@ -30,7 +30,9 @@ export default function Footer() {
         </p>
         <div className={styles.two_sides}>
           <p>Tüm hakları saklıdır. Nitoji &copy; 2022-2023.</p>
-          <a href="https://www.gokaygultekin.dev">GG</a>
+          <a className={styles.gg} href="https://www.gokaygultekin.dev">
+            Gökay Gültekin
+          </a>
         </div>
       </footer>
     </>
