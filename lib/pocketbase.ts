@@ -1,5 +1,5 @@
 import PocketBase from "pocketbase";
 
-const pb = new PocketBase("https://duga1.xyz");
+const pb = new PocketBase("https://aya.gokay.works");
 
 export default pb;
