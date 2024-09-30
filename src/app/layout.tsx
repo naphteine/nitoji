@@ -39,7 +39,7 @@ export default function RootLayout({
             <Link href="/">Sözlük</Link> | <Link href="/news">Haberler</Link> |{" "}
             <Link href="/culture">Kültür</Link> |{" "}
             <Link href="/resources">Kaynaklar</Link> |{" "}
-            <Link href="furiyomi.gokay.works">Furiyomi</Link>
+            <Link href="https://furiyomi.gokay.works">Furiyomi</Link>
           </nav>
         </header>
         {children}
